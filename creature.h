@@ -6,6 +6,8 @@
 #include "food.h"
 #include "environment.h"
 
+// max characters in a creature's name
+#define MAX_CREATURE_NAME_LENGTH (256)
 
 class Creature {
 
@@ -21,8 +23,9 @@ class Creature {
      * @param defense creature's ability to avoid being hurt
      * @param stomachCapacity amount of food creature can hold in stomach
      * @param fatCapacity amount of food creature can store in reserves
+     * @param name name
      */
-    Creature(unsigned int totalDurability, unsigned int strength, unsigned int defense, unsigned int stomachCapacity, unsigned int fatCapacity);
+    Creature(unsigned int totalDurability, unsigned int strength, unsigned int defense, unsigned int stomachCapacity, unsigned int fatCapacity, char const* name);
 
 
     /**
@@ -57,6 +60,7 @@ class Creature {
     private:
 
     Creature * _species; // pointer to the creature's species model object
+    char const[MAX_CREATURE_NAME_LENGTH] _speciesName; // name of the creature
 
 
     unsigned int _totalDurability; // equivalent to " max health"
@@ -64,8 +68,8 @@ class Creature {
     unsigned int _strength; // how good creature is at killing
     unsigned int _defense; // how good creature is at surviving
 
-
-    vector<Food> _edibleFoods;
+    // what can the creature eat?
+    vector<foodType> _edibleFoods;
 
     Food _stomachFood; // food currently eating
     unsigned int _stomachCapacity; // how large the stomach is
