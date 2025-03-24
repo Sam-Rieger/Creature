@@ -9,6 +9,8 @@
 
 class Creature {
 
+
+    // ==================================================== PUBLIC MEMBERS ===========================================================
     public:
 
     /**
@@ -30,12 +32,21 @@ class Creature {
      */
     Creature(Creature & species);
 
-    // copy operator
+    /**
+     * @brief Copy operator; set all parameters of LHS to RHS's
+     * 
+     * @param CREATURE copy
+     * @return Creature& 
+     */
     Creature & operator = (const Creature& CREATURE);
 
-    // deconstructor
+    /**
+     * @brief Deconstruct the Creature object
+     * 
+     */
     ~Creature();
 
+    // ==================================================== PRIVATE MEMBERS ===========================================================
     private:
 
     Creature * _species; // pointer to the creature's species model object
