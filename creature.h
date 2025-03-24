@@ -56,6 +56,26 @@ class Creature {
      */
     explicit Creature::operator Food() const;
 
+    /**
+     * @brief puts food in the creature's stomach
+     * 
+     * @param food reference to the food being consumed
+     */
+    void eat(Food & food);
+
+    /**
+     * @brief Attack the enemy creature
+     * 
+     * @param enemy creature to attack
+     */
+    void fight(Creature & enemy);
+
+    /**
+     * @brief move to destination
+     * 
+     * @param destination 
+     */
+    void move (Environment & destination);
     // ==================================================== PRIVATE MEMBERS ===========================================================
     private:
 

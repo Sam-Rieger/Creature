@@ -6,8 +6,12 @@
  * 
  */
 enum foodType {
-    meat = 1,
-    veggie = 0
+    toughMeat,
+    softMeat,
+    veggie1,
+    veggie2,
+    veggie3
+
 };
 
 class Food {
