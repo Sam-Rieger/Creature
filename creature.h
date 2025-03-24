@@ -76,6 +76,10 @@ class Creature {
      * @param destination 
      */
     void move (Environment & destination);
+
+
+
+    
     // ==================================================== PRIVATE MEMBERS ===========================================================
     private:
 
