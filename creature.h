@@ -46,6 +46,13 @@ class Creature {
      */
     ~Creature();
 
+    /**
+     * @brief Defines static cast from creature to food
+     * 
+     * @return Food 
+     */
+    explicit Creature::operator Food() const;
+
     // ==================================================== PRIVATE MEMBERS ===========================================================
     private:
 
