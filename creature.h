@@ -23,9 +23,11 @@ class Creature {
      * @param defense creature's ability to avoid being hurt
      * @param stomachCapacity amount of food creature can hold in stomach
      * @param fatCapacity amount of food creature can store in reserves
-     * @param name name
+     * @param name species name
+     * @param oldAge how old is old for this species?
+     * @param speed how fast is the creature to act? (ranked by speed, then age for order of action.)
      */
-    Creature(unsigned int totalDurability, unsigned int strength, unsigned int defense, unsigned int stomachCapacity, unsigned int fatCapacity, char const* name);
+    Creature(unsigned int totalDurability, unsigned int strength, unsigned int defense, unsigned int stomachCapacity, unsigned int fatCapacity, char const* name, unsigned int oldAge, unsigned int speed);
 
 
     /**
@@ -75,11 +77,16 @@ class Creature {
      * 
      * @param destination 
      */
-    void move (Environment & destination);
+    void move(Environment & destination);
 
 
+    /**
+     * @brief make a decision on what to do.
+     * 
+     */
+    void makeDecision();
 
-    
+
     // ==================================================== PRIVATE MEMBERS ===========================================================
     private:
 
@@ -91,6 +98,11 @@ class Creature {
     unsigned int _durability; // equivalent to "health"
     unsigned int _strength; // how good creature is at killing
     unsigned int _defense; // how good creature is at surviving
+
+
+    unsigned int _age; // number of turns the creature has been alive
+    unsigned int _old; // how old is old for this species?
+    unsigned int _speed; // how fast this creature is at making a decision (determines initiative)
 
     // what can the creature eat?
     vector<foodType> _edibleFoods;
