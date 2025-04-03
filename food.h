@@ -30,6 +30,15 @@ class Food {
      */
     Food();
 
+    /**
+     * @brief Get the Consumed object
+     * 
+     * @param amount 
+     */
+    int getConsumed(unsigned int amount);
+
+    foodType getFoodType();
+
 
     private:
     foodType _type;
