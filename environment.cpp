@@ -1,7 +1,7 @@
 #include "environment.h"
 #include "creature.h"
 
-Environment::Environment(std::vector<Food> const &foodTypes, int abundance) {
+Environment::Environment(std::vector<foodType> const &foodTypes, int abundance) {
     this->_foodTypes = foodTypes;
     this->_foodFactor = abundance;
 }
