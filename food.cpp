@@ -29,5 +29,5 @@ foodType Food::getFoodType()
 
 int Food::getFoodAmount()
 {
-    return this->getFoodAmount;
+    return this->_foodAmount;
 }
