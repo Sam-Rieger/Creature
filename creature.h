@@ -4,10 +4,12 @@
 
 #include <vector>
 #include "food.h"
-#include "environment.h"
 
 // max characters in a creature's name
 #define MAX_CREATURE_NAME_LENGTH (256)
+
+// Forward declaration
+class Environment;
 
 class Creature {
 
@@ -56,7 +58,7 @@ class Creature {
      * 
      * @return Food 
      */
-    explicit Creature::operator Food() const;
+    explicit operator Food() const;
 
     /**
      * @brief puts food in the creature's stomach
@@ -79,6 +81,12 @@ class Creature {
      */
     void move(Environment & destination);
 
+    /**
+     * @brief Lay an egg
+     * 
+     */
+    void egg();
+
 
     /**
      * @brief make a decision on what to do.
@@ -87,11 +95,19 @@ class Creature {
     void makeDecision();
 
 
+    /**
+     * @brief Get the Location of the creature
+     * 
+     * @return Environment* 
+     */
+    Environment* getLocation();
+
+
     // ==================================================== PRIVATE MEMBERS ===========================================================
     private:
 
     Creature * _species; // pointer to the creature's species model object
-    char const[MAX_CREATURE_NAME_LENGTH] _speciesName; // name of the creature
+    char const _speciesName[MAX_CREATURE_NAME_LENGTH]; // name of the creature
 
 
     unsigned int _totalDurability; // equivalent to " max health"
@@ -105,7 +121,7 @@ class Creature {
     unsigned int _speed; // how fast this creature is at making a decision (determines initiative)
 
     // what can the creature eat?
-    vector<foodType> _edibleFoods;
+    std::vector<foodType> _edibleFoods;
 
     Food _stomachFood; // food currently eating
     unsigned int _stomachCapacity; // how large the stomach is

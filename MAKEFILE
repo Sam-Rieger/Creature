@@ -1,6 +1,3 @@
-# A line starting with a has is a comment, we'll build up
-# the below example
-
 TARGET = L4B
 SRC_FILES = main.cpp environment.cpp food.cpp ui.cpp creature.cpp
 

@@ -2,6 +2,10 @@
 #define __ENVIRONMENT_H__
 
 #include <vector>
+#include "food.h"
+
+// Forward declaration
+class Creature;
 
 class Environment {
     public:
@@ -19,7 +23,7 @@ class Environment {
     std::vector<Environment*> _connections; // environemnts connected to this one
     std::vector<Creature*> _creatures; // who is living here
     std::vector<Food> _foodTypes; // what food grows here
-    unsigned double _foodFactor; // what food there is
+    double _foodFactor; // what food there is
 
 };
 
