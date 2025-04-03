@@ -28,8 +28,10 @@ class Creature {
      * @param name species name
      * @param oldAge how old is old for this species?
      * @param speed how fast is the creature to act? (ranked by speed, then age for order of action.)
+     * @param edibleFoods what can it eat?
+     * @param metabolism energy needed per day
      */
-    Creature(unsigned int totalDurability, unsigned int strength, unsigned int defense, unsigned int stomachCapacity, unsigned int fatCapacity, char const* name, unsigned int oldAge, unsigned int speed, std::vector<foodType> edibleFoods);
+    Creature(unsigned int totalDurability, unsigned int strength, unsigned int defense, unsigned int stomachCapacity, unsigned int fatCapacity, char const* name, unsigned int oldAge, unsigned int speed, std::vector<foodType> edibleFoods, unsigned int metabolism);
 
     /**
      * @brief Construct a new Creature object; copy constructor, used to instantiate members of the species
@@ -37,14 +39,6 @@ class Creature {
      * @param species copied object
      */
     Creature(Creature & species);
-
-    /**
-     * @brief Copy operator; set all parameters of LHS to RHS's
-     * 
-     * @param CREATURE copy
-     * @return Creature& 
-     */
-    Creature & operator = (const Creature& CREATURE);
 
     /**
      * @brief Deconstruct the Creature object
@@ -62,9 +56,9 @@ class Creature {
     /**
      * @brief puts food in the creature's stomach
      * 
-     * @param food reference to the food being consumed
+     * @param food food's index from the environment
      */
-    void eat(Food & food);
+    void eat(Food * food);
 
     /**
      * @brief Attack the enemy creature
@@ -105,6 +99,14 @@ class Creature {
     // ==================================================== PRIVATE MEMBERS ===========================================================
     private:
 
+    /**
+     * @brief Copy operator; set all parameters of LHS to RHS's.  Declared private because it should not be used in this project.
+     * 
+     * @param CREATURE copy
+     * @return Creature& 
+     */
+    Creature & operator = (const Creature& CREATURE);
+
     Creature * _species; // pointer to the creature's species model object
     char _speciesName[MAX_CREATURE_NAME_LENGTH]; // name of the creature
 
@@ -127,6 +129,7 @@ class Creature {
     unsigned int _stomachFillAmount; // how full the creature is
     unsigned int _fat; // fat in creature
     unsigned int _fatCapacity; // total possible fat
+    unsigned int _metabolism; // energy per tick required to live
 
 
 
