@@ -22,8 +22,11 @@ void Environment::updateCreatureList(std::vector<Creature *> creatures)
     }
 }
 
-std::vector<Environment *> Environment::getConnections()
-{
+std::vector<Environment *> Environment::getConnections() {
     return this->_connections;
 
+}
+
+std::vector<Food *> Environment::getFood() {
+    return this->_foods;
 }

@@ -39,12 +39,20 @@ class Environment {
      */
     std::vector<Environment*> getConnections();
 
+    /**
+     * @brief Get the Food pointers in this environment
+     * 
+     * @return std::vector<Food *> the food
+     */
+    std::vector<Food *> getFood();
+
     
 
     private:
     std::vector<Environment*> _connections; // environemnts connected to this one
     std::vector<Creature*> _creatures; // who is living here
     std::vector<foodType> _foodTypes; // what food grows here
+    std::vector<Food *> _foods; // pointers to all the foods here
     int _foodFactor; // abundance of food (growth rate per turn)
 
 

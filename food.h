@@ -16,7 +16,15 @@ enum foodType {
 
 class Food {
     public:
+    /**
+     * @brief Construct a new Food object
+     * 
+     * @param amount amount of food this food has
+     * @param type type of food
+     */
     Food(int amount, foodType type);
+
+    
     private:
     foodType _type;
     unsigned int _foodAmount;
