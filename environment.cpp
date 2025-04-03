@@ -1,6 +1,17 @@
 #include "environment.h"
 #include "creature.h"
 
+Environment::Environment(std::vector<Food> const &foodTypes, double abundance) {
+    this->_foodTypes = foodTypes;
+    this->_foodFactor = abundance;
+}
+
+void Environment::setNeighbors(Environment *E1, Environment *E2)
+{
+    E1->_connections.push_back(E2);
+    E2->_connections.push_back(E1);
+}
+
 void Environment::updateCreatureList(std::vector<Creature *> creatures)
 {
     this->_creatures.clear();
@@ -9,4 +20,10 @@ void Environment::updateCreatureList(std::vector<Creature *> creatures)
             this->_creatures.push_back(c);
         }
     }
+}
+
+std::vector<Environment *> Environment::getConnections()
+{
+    return this->_connections;
+
 }
