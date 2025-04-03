@@ -10,6 +10,11 @@
 #include "creature.h"
 #include "food.h"
 #include "environment.h"
+#include <iostream>
+#include <cstring>
+
+using std::cout;
+using std::endl;
 
 int main() {
 
@@ -65,7 +70,21 @@ int main() {
 
 
     while(true) {
-        break;
+
+        // resort creatures based on their speed/age
+
+        // creature actions, one at a time (and print)
+
+        // metabolisms (and print)
+
+        // delete those which are dead
+
+        cout << "Type anything else to continue, or type \"HALT\" to end it." << std::endl;
+        char dummy[MAX_CREATURE_NAME_LENGTH];
+        std::cin >> dummy;
+        if(strncmp(dummy, "HALT", 5) == 0) {
+            break;
+        }
     }
 
 
