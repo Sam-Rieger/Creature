@@ -2,4 +2,5 @@ environment.o
 food.o
 main.o
 UI.o
+creature.o
 Ecosystem.exe
