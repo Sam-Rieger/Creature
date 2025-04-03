@@ -1,5 +1,5 @@
-TARGET = L4B
-SRC_FILES = main.cpp environment.cpp food.cpp ui.cpp creature.cpp
+TARGET = Ecosystem
+SRC_FILES = main.cpp environment.cpp food.cpp UI.cpp creature.cpp
 
 # NO EDITS NEEDED BELOW THIS LINE
 
