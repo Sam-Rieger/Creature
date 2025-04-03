@@ -24,6 +24,7 @@ void Creature::metabolize()
     } else {
         this->die();
     }
+    
 }
 
 bool Creature::checkDead()
@@ -69,6 +70,11 @@ Creature::Creature(Creature &species) {
     // set progenitor species
     this->_species = &species;
 
+    // set up other values
+    this->_durability = this->_totalDurability;
+    this->_age = 0;
+    this->_location = nullptr;
+
 }
 
 Creature &Creature::operator=(Creature const &CREATURE)
@@ -90,4 +96,27 @@ Creature::~Creature(){
 void Creature::eat(Food *food)
 {
     this->_stomachFood = Food(food->getConsumed(this->_stomachCapacity), food->getFoodType());
+}
+
+void Creature::move(Environment &destination)
+{
+    if(this->_location == nullptr) {
+        
+    } else {
+
+    }
+
+    this->_location = &destination;
+
+}
+
+void Creature::expendEnergy(int energy)
+{
+    energy -= _stomachFood.getConsumed(energy);
+
+    if(_fat < energy) {
+        this->die();
+    } else {
+        _fat -= energy;
+    }
 }

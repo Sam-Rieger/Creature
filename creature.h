@@ -74,6 +74,14 @@ class Creature {
      */
     void move(Environment & destination);
 
+
+    /**
+     * @brief expend this energy
+     * 
+     * @param energy energy amount to expend
+     */
+    void expendEnergy(int energy);
+
     /**
      * @brief Lay an egg
      * 
@@ -146,7 +154,6 @@ class Creature {
 
     Food _stomachFood; // food currently eating
     unsigned int _stomachCapacity; // how large the stomach is
-    unsigned int _stomachFillAmount; // how full the creature is
     unsigned int _fat; // fat in creature
     unsigned int _fatCapacity; // total possible fat
     unsigned int _metabolism; // energy per tick required to live
