@@ -82,7 +82,7 @@ class Creature {
 
 
     /**
-     * @brief make a decision on what to do.
+     * @brief make a decision on what to do.  Each creature does its actions, then checks for death.
      * 
      */
     void makeDecision();
@@ -94,6 +94,19 @@ class Creature {
      * @return Environment* 
      */
     Environment* getLocation();
+
+
+    /**
+     * @brief process food, excess into fat.
+     * 
+     */
+    void metabolize();
+
+    /**
+     * @brief death comes for us all
+     * 
+     */
+    void die();
 
 
     // ==================================================== PRIVATE MEMBERS ===========================================================

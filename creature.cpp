@@ -8,6 +8,24 @@ Environment * Creature::getLocation()
     return this->_location;
 }
 
+void Creature::metabolize()
+{
+    if(this->_stomachFood.getFoodAmount() > this->_metabolism) {
+        this->_fat += (this->_stomachFood.getFoodAmount() - this->_metabolism);
+        if(this->_fat > this->_fatCapacity) {
+            this->_fat = this->_fatCapacity;
+        }
+    } else if(this->_stomachFood.getFoodAmount() + this->_fat > this->_metabolism) {
+        this->_fat -= (this->_metabolism - this->_stomachFood.getFoodAmount()); // yes, I do realize this is the same operation as above.  
+    } else {
+        this->die();
+    }
+}
+
+void Creature::die()
+{
+}
+
 Creature::Creature(unsigned int totalDurability, unsigned int strength, unsigned int defense, unsigned int stomachCapacity, 
 unsigned int fatCapacity, char const *name, unsigned int oldAge, unsigned int speed, std::vector<foodType> edibleFoods, unsigned int metabolism) {
 
