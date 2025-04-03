@@ -16,7 +16,7 @@ class Environment {
      * @param foodTypes what grows here
      * @param abundance how much
      */
-    Environment(std::vector<Food> const & foodTypes, double abundance);
+    Environment(std::vector<foodType> const & foodTypes, double abundance);
 
     /**
      * @brief Makes E1 and E2 connected
@@ -44,7 +44,7 @@ class Environment {
     private:
     std::vector<Environment*> _connections; // environemnts connected to this one
     std::vector<Creature*> _creatures; // who is living here
-    std::vector<Food> _foodTypes; // what food grows here
+    std::vector<foodType> _foodTypes; // what food grows here
     double _foodFactor; // abundance of food (growth rate per turn)
 
 
