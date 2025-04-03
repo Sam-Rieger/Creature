@@ -29,7 +29,7 @@ class Creature {
      * @param oldAge how old is old for this species?
      * @param speed how fast is the creature to act? (ranked by speed, then age for order of action.)
      */
-    Creature(unsigned int totalDurability, unsigned int strength, unsigned int defense, unsigned int stomachCapacity, unsigned int fatCapacity, char const* name, unsigned int oldAge, unsigned int speed);
+    Creature(unsigned int totalDurability, unsigned int strength, unsigned int defense, unsigned int stomachCapacity, unsigned int fatCapacity, char const* name, unsigned int oldAge, unsigned int speed, std::vector<foodType> edibleFoods);
 
     /**
      * @brief Construct a new Creature object; copy constructor, used to instantiate members of the species
@@ -106,7 +106,7 @@ class Creature {
     private:
 
     Creature * _species; // pointer to the creature's species model object
-    char const _speciesName[MAX_CREATURE_NAME_LENGTH]; // name of the creature
+    char _speciesName[MAX_CREATURE_NAME_LENGTH]; // name of the creature
 
 
     unsigned int _totalDurability; // equivalent to " max health"

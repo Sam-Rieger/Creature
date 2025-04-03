@@ -15,8 +15,6 @@
 int main() {
 
     // All of the following is extensible, just limited to this specific world to avoid scope creep.
-
-
     
     // =============================================== SETUP ENVIRONMENT ======================================================
 

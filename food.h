@@ -24,7 +24,13 @@ class Food {
      */
     Food(int amount, foodType type);
 
-    
+    /**
+     * @brief Default constructor
+     * 
+     */
+    Food();
+
+
     private:
     foodType _type;
     unsigned int _foodAmount;
