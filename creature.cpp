@@ -93,7 +93,7 @@ Creature::~Creature(){
     // no special implementation needed, just satisfying big 3 (no DMM, but did define copy constructor and I don't wanna fight for points)
 }
 
-void Creature::eat(Food *food)
+void Creature::eat(Food * food)
 {
     this->_stomachFood = Food(food->getConsumed(this->_stomachCapacity), food->getFoodType());
 }
@@ -101,9 +101,10 @@ void Creature::eat(Food *food)
 void Creature::move(Environment &destination)
 {
     if(this->_location == nullptr) {
-        
+        // the location is being set for the first time
     } else {
-
+        // 10 is a placeholder, extended creatures could have different abilities to traverse terrain. keeping it simple for now.
+        expendEnergy(10);
     }
 
     this->_location = &destination;
@@ -119,4 +120,12 @@ void Creature::expendEnergy(int energy)
     } else {
         _fat -= energy;
     }
+}
+
+void Creature::egg()
+{
+    // laying eggs is hard.  this provides for death during childbirth, too.
+    expendEnergy(35);
+//    return Creature(*this->_species);
+
 }

@@ -26,11 +26,10 @@ class Environment {
     static void setNeighbors(Environment * E1, Environment * E2);
 
     /**
-     * @brief Updates the environment's local list of creatures from the universal one.
+     * @brief Updates the environment's creatures (dead/moved)
      * 
-     * @param creatures 
      */
-    void updateCreatureList(std::vector<Creature*> creatures);
+    void updateCreatureList();
 
     /**
      * @brief gets rid of eaten food from the environment, grows more.
@@ -52,11 +51,18 @@ class Environment {
      */
     std::vector<Food *> getFood();
 
+    /**
+     * @brief birth, as it says, a creature
+     * 
+     * @param species the species to enbirthinate
+     */
+    void birthACreature(Creature * species);
+
     
 
     private:
     std::vector<Environment*> _connections; // environemnts connected to this one
-    std::vector<Creature*> _creatures; // who is living here
+    //std::vector<Creature*> _creatures; // who is living here
     std::vector<foodType> _foodTypes; // what food grows here
     std::vector<Food *> _foods; // pointers to all the foods here
     int _foodFactor; // abundance of food (growth rate per turn)

@@ -83,8 +83,9 @@ class Creature {
     void expendEnergy(int energy);
 
     /**
-     * @brief Lay an egg
+     * @brief lay an egg
      * 
+     * @return Creature; the result
      */
     void egg();
 
