@@ -10,6 +10,10 @@ Environment * Creature::getLocation()
 
 void Creature::metabolize()
 {
+
+    if(this->_durability <= 0) {
+        this->die();
+    }
     if(this->_stomachFood.getFoodAmount() > this->_metabolism) {
         this->_fat += (this->_stomachFood.getFoodAmount() - this->_metabolism);
         if(this->_fat > this->_fatCapacity) {
@@ -22,8 +26,14 @@ void Creature::metabolize()
     }
 }
 
+bool Creature::checkDead()
+{
+    return _dead;
+}
+
 void Creature::die()
 {
+    this->_dead = true;
 }
 
 Creature::Creature(unsigned int totalDurability, unsigned int strength, unsigned int defense, unsigned int stomachCapacity, 

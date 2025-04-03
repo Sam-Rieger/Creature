@@ -97,10 +97,17 @@ class Creature {
 
 
     /**
-     * @brief process food, excess into fat.
+     * @brief process food, excess into fat.  Called at end of turn, also checks for death.
      * 
      */
     void metabolize();
+
+    /**
+     * @brief check if it moves
+     * 
+     * @return true means dead, false, you get it
+     */
+    bool checkDead();
 
     /**
      * @brief death comes for us all
@@ -143,6 +150,7 @@ class Creature {
     unsigned int _fat; // fat in creature
     unsigned int _fatCapacity; // total possible fat
     unsigned int _metabolism; // energy per tick required to live
+    bool _dead = false;
 
 
 
