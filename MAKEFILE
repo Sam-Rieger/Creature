@@ -42,5 +42,4 @@ depend:
 .PHONY: all clean depend
 
 # DEPENDENCIES
-main.o: main.cpp Warehouse.hpp Box.h
-Box.o: Box.cpp Box.h
+
