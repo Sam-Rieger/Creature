@@ -16,6 +16,7 @@ enum foodType {
 
 class Food {
     public:
+    Food(int amount, foodType type);
     private:
     foodType _type;
     unsigned int _foodAmount;

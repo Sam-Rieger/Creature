@@ -31,7 +31,6 @@ class Creature {
      */
     Creature(unsigned int totalDurability, unsigned int strength, unsigned int defense, unsigned int stomachCapacity, unsigned int fatCapacity, char const* name, unsigned int oldAge, unsigned int speed);
 
-
     /**
      * @brief Construct a new Creature object; copy constructor, used to instantiate members of the species
      * 
