@@ -45,6 +45,17 @@ int main() {
     Environment::setNeighbors(&Oasis, &Grassland1);
     Environment::setNeighbors(&Oasis, &Forest2);
 
+    // make a convenient array for processing environment
+    Environment* const locations[] = {
+        &Forest1,
+        &Forest2,
+        &Mountains,
+        &Desert,
+        &Grassland1,
+        &Grassland2,
+        &Oasis
+        };
+
     // ====================================================== SETUP SPECIES =====================================================
     
 
