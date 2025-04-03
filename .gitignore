@@ -1,0 +1,5 @@
+environment.o
+food.o
+main.o
+UI.o
+Ecosystem.exe
