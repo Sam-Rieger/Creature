@@ -33,6 +33,12 @@ class Environment {
     void updateCreatureList(std::vector<Creature*> creatures);
 
     /**
+     * @brief gets rid of eaten food from the environment, grows more.
+     * 
+     */
+    void updateFoodList();
+
+    /**
      * @brief Get the connected environments
      * 
      * @return std::vector<Environment*> 

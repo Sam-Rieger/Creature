@@ -26,3 +26,8 @@ foodType Food::getFoodType()
 {
     return this->_type;
 }
+
+int Food::getFoodAmount()
+{
+    return this->getFoodAmount;
+}

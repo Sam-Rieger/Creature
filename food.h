@@ -39,6 +39,13 @@ class Food {
 
     foodType getFoodType();
 
+    /**
+     * @brief Get the amount of food left
+     * 
+     * @return int 
+     */
+    int getFoodAmount();
+
 
     private:
     foodType _type;
