@@ -1,0 +1,23 @@
+number of species total in spdx file (2 for this example)
+===================================SPECIES 1==========================================
+totalDurability
+strength
+defense
+stomachCapacity
+fatCapacity
+speciesName
+oldAge threshold
+speed
+edibleFoods
+metabolism
+===================================SPECIES 2==========================================
+250
+100
+60
+20
+60
+Turtles
+8
+1
+3 4 5
+10
