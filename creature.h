@@ -144,7 +144,7 @@ class Creature {
     Creature & operator = (const Creature& CREATURE);
 
     Creature * _species; // pointer to the creature's species model object
-    char _speciesName[MAX_CREATURE_NAME_LENGTH]; // name of the creature
+    char _speciesName[MAX_CREATURE_NAME_LENGTH]; // name of the creature's species
 
 
     unsigned int _totalDurability; // equivalent to " max health"
