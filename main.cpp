@@ -105,6 +105,9 @@ int main() {
 
         // creature actions, one at a time (and print)
 
+            // TODO: grab the MEAT after hunting
+
+
         // metabolisms (and print)
 
         // delete those which are dead

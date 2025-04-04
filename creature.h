@@ -87,7 +87,7 @@ class Creature {
      * 
      * @param energy energy amount to expend
      */
-    void expendEnergy(int energy);
+    void expendEnergy(unsigned int energy);
 
     /**
      * @brief lay an egg

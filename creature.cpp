@@ -18,7 +18,7 @@ void Creature::metabolize()
     if(this->_durability <= 0) {
         this->die();
     }
-    if(this->_stomachFood.getFoodAmount() > this->_metabolism) {
+    if((unsigned) this->_stomachFood.getFoodAmount() > this->_metabolism) {
         this->_fat += (this->_stomachFood.getFoodAmount() - this->_metabolism);
         if(this->_fat > this->_fatCapacity) {
             this->_fat = this->_fatCapacity;
@@ -93,10 +93,17 @@ Creature &Creature::operator=(Creature const &CREATURE)
     strncpy(this->_speciesName, CREATURE._speciesName, MAX_CREATURE_NAME_LENGTH);
     this->_old = CREATURE._old;
     this->_speed = CREATURE._speed;
+
+    return *this;
 }
 
 Creature::~Creature(){
     // no special implementation needed, just satisfying big 3 (no DMM, but did define copy constructor and I don't wanna fight for points)
+}
+
+Creature::operator Food() const
+{
+    return Food(this->_fat, foodType::softMeat);
 }
 
 void Creature::eat(Food * food)
@@ -113,7 +120,6 @@ void Creature::hunt(Creature * enemy) {
         this->loseHealth(enemy->_defense - _strength);
     }
 
-    // TODO: grab the MEAT
 
 }
 
@@ -138,7 +144,7 @@ void Creature::move(Environment &destination)
 
 }
 
-void Creature::expendEnergy(int energy)
+void Creature::expendEnergy(unsigned int energy)
 {
     energy -= _stomachFood.getConsumed(energy);
 
