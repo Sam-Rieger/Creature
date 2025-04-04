@@ -8,6 +8,9 @@
 // max characters in a creature's name
 #define MAX_CREATURE_NAME_LENGTH (256)
 
+// max length of a data line in the .spdx file
+#define MAX_DATA_MEMBER_LENGTH (32)
+
 // Forward declaration
 class Environment;
 

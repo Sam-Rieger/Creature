@@ -13,6 +13,7 @@
 #include <iostream>
 #include <cstring>
 #include <fstream>
+#include <limits>
 
 
 using std::cout;
@@ -63,7 +64,7 @@ int main() {
     // ====================================================== SETUP SPECIES =====================================================
 
     // holds each species template
-    std::vector<Creature> species;
+    std::vector<Creature *> species;
 
     // load species file
     std::ifstream fin;
@@ -74,14 +75,42 @@ int main() {
         return EXIT_FAILURE;
     }
 
-    unsigned int n;
+    int n;
 
     fin >> n;
 
-    for(int i = 0; i < n; ++n) {
-        // do each creature load
-    }
+    fin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
+    
+
+    for(int i = 0; i < n; ++i) {
+
+        char creatureData[MAX_DATA_MEMBER_LENGTH + 1][11];
+
+        for(int j = 0; j < 11; ++j) {
+            fin.getline(creatureData[j], MAX_DATA_MEMBER_LENGTH);
+            //cout << j << " " <<creatureData[j] << endl;
+        }
+
+        // TODO: replace with the actually edible food
+        std::vector<foodType> edible = {foodType::veggie1, foodType::veggie2, foodType::veggie3, foodType::softMeat};
+
+        
+
+        species.push_back(new Creature {
+            (unsigned) atoi(creatureData[1]),
+            (unsigned) atoi(creatureData[2]),
+            (unsigned) atoi(creatureData[3]),
+            (unsigned) atoi(creatureData[4]),
+            (unsigned) atoi(creatureData[5]),
+            creatureData[6],
+            (unsigned) atoi(creatureData[7]),
+            (unsigned) atoi(creatureData[8]),
+            edible, 
+            (unsigned) atoi(creatureData[10])
+
+        });
+    }
 
 
 
@@ -118,6 +147,15 @@ int main() {
         if(strncmp(dummy, "HALT", 5) == 0) {
             break;
         }
+    }
+
+    for(Creature *&c : species) {
+        delete c;
+    }
+
+
+    for(Creature *&c : creatures) {
+        delete c;
     }
 
 

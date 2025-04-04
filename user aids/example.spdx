@@ -8,7 +8,7 @@ fatCapacity
 speciesName
 oldAge threshold
 speed
-edibleFoods
+edibleFoods (space separated ints which correspond to the foodType enum)
 metabolism
 ===================================SPECIES 2==========================================
 10
