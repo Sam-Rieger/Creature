@@ -133,20 +133,43 @@ int main() {
 
         // resort creatures based on their speed/age
 
-        makeCreatureInitiativeOrder(creatures);
+        makeCreatureInitiativeOrder(creatures);                 
 
-        // creature actions, one at a time (and print)
 
-        for(Creature *&c : creatures) {
+        // essentially a for loop, but allows for reindexing
+        auto iterator = creatures.begin();        
+
+        while (iterator != creatures.end()) {
+
+            Creature * c = (*iterator);
+
+            // creature actions, one at a time (and print)
+
+
+
+
+                // TODO: grab the MEAT after hunting
+
+
+
+
+
+            // end of turn metabolism
+            c->metabolize();
+
+            // delete those which are dead
+            if(c->checkDead()) {
+                // TODO: death message
+                delete *iterator; 
+                iterator = creatures.erase(iterator);
+            } else {
+                ++iterator;
+            }
+            
+           
             
         }
 
-            // TODO: grab the MEAT after hunting
-
-
-        // metabolisms (and print)
-
-        // delete those which are dead
 
         cout << "Type anything else to execute another timestep, or type \"HALT\" to end it." << std::endl;
         char dummy[MAX_CREATURE_NAME_LENGTH];
@@ -163,11 +186,15 @@ int main() {
 
 
     for(Creature *&c : species) {
-        delete c;
+        if(c != nullptr) {
+            delete c;
+        }
     }
 
     for(Creature *&c : creatures) {
-        delete c;
+        if(c != nullptr) {
+            delete c;
+        }
     }
 
 
