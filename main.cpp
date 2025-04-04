@@ -125,7 +125,7 @@ int main() {
 
     /** @todo: for each species, let the user input initial population and location */
 
-    // ===================================================== RUN SIMULATION =====================================================
+    // ========================================================= RUN SIMULATION ========================================================
 
 
 
@@ -133,7 +133,13 @@ int main() {
 
         // resort creatures based on their speed/age
 
+        makeCreatureInitiativeOrder(creatures);
+
         // creature actions, one at a time (and print)
+
+        for(Creature *&c : creatures) {
+            
+        }
 
             // TODO: grab the MEAT after hunting
 
@@ -142,7 +148,7 @@ int main() {
 
         // delete those which are dead
 
-        cout << "Type anything else to continue, or type \"HALT\" to end it." << std::endl;
+        cout << "Type anything else to execute another timestep, or type \"HALT\" to end it." << std::endl;
         char dummy[MAX_CREATURE_NAME_LENGTH];
         std::cin >> dummy;
         if(strncmp(dummy, "HALT", 5) == 0) {
@@ -150,10 +156,15 @@ int main() {
         }
     }
 
+
+
+
+    // ============================================================ END =============================================================
+
+
     for(Creature *&c : species) {
         delete c;
     }
-
 
     for(Creature *&c : creatures) {
         delete c;
