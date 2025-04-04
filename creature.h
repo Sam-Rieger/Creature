@@ -65,7 +65,14 @@ class Creature {
      * 
      * @param enemy creature to attack
      */
-    void fight(Creature & enemy);
+    void hunt(Creature * enemy);
+
+    /**
+     * @brief Decrease durability by the designated amount
+     * 
+     * @param amount how much damage to dish out
+     */
+    void loseHealth(unsigned int amount);
 
     /**
      * @brief move to destination

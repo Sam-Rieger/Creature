@@ -104,6 +104,27 @@ void Creature::eat(Food * food)
     this->_stomachFood = Food(food->getConsumed(this->_stomachCapacity), food->getFoodType());
 }
 
+void Creature::hunt(Creature * enemy) {
+
+    if(this->_strength > enemy->_defense) {
+        enemy->die();
+    } else {
+        enemy->die();
+        this->loseHealth(enemy->_defense - _strength);
+    }
+
+    // TODO: grab the MEAT
+
+}
+
+void Creature::loseHealth(unsigned int amount) {
+    if(amount < this->_durability) {
+        this->_durability -= amount;
+    } else {
+        this->die();
+    }
+}
+
 void Creature::move(Environment &destination)
 {
     if(this->_location == nullptr) {
