@@ -12,6 +12,8 @@
 #include "environment.h"
 #include <iostream>
 #include <cstring>
+#include <fstream>
+
 
 using std::cout;
 using std::endl;
@@ -60,8 +62,26 @@ int main() {
 
     // ====================================================== SETUP SPECIES =====================================================
 
+    // holds each species template
+    std::vector<Creature> species;
 
-    
+    // load species file
+    std::ifstream fin;
+    fin.open("./data/speciesData.spdx");
+
+    if( fin.fail() ) {
+        std::cerr << "Datafile couldn't be opened" << endl;
+        return EXIT_FAILURE;
+    }
+
+    unsigned int n;
+
+    fin >> n;
+
+    for(int i = 0; i < n; ++n) {
+        // do each creature load
+    }
+
 
 
 
@@ -100,6 +120,6 @@ int main() {
 
 
 
-    return (0);
+    return EXIT_SUCCESS;
 
 }
