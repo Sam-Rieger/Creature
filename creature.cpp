@@ -11,6 +11,10 @@ Environment * Creature::getLocation()
 void Creature::metabolize()
 {
 
+    if(this->_age > this->_old) {
+        this->_durability -= (unsigned int) (this->_totalDurability * 0.25);
+    }
+
     if(this->_durability <= 0) {
         this->die();
     }
@@ -24,6 +28,8 @@ void Creature::metabolize()
     } else {
         this->die();
     }
+
+    ++_age;
     
 }
 
