@@ -47,12 +47,12 @@ class UI {
 
     private:
     // colors
-    static char constexpr _default[] = "\033[0m";
-    static char constexpr _red[] = "\033[31m";
-    static char constexpr _green[] = "\033[32m";
-    static char constexpr _blue[] = "\033[34m";
-    static char constexpr _yellow[] = "\033[33m";
-    static char constexpr _magenta[] = "\033[35m";
+    static char constexpr _default[] = "\033[0m"; // normal text
+    static char constexpr _red[] = "\033[31m"; // DEATH
+    static char constexpr _green[] = "\033[32m"; // values of attributes/location names
+    static char constexpr _blue[] = "\033[34m"; // species identifier
+    static char constexpr _yellow[] = "\033[33m"; // for creature actions
+    static char constexpr _magenta[] = "\033[35m"; // for user inputs
 
 
 };
