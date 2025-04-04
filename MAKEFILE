@@ -1,5 +1,5 @@
 TARGET = Ecosystem
-SRC_FILES = main.cpp environment.cpp food.cpp creature.cpp
+SRC_FILES = main.cpp environment.cpp food.cpp creature.cpp ui.cpp
 
 # NO EDITS NEEDED BELOW THIS LINE
 
