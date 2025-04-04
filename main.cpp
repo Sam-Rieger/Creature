@@ -171,6 +171,7 @@ int main() {
         }
 
         // TODO: add details options
+        // TODO replace with UI function
         cout << "Type anything else to execute another timestep, or type \"HALT\" to end it." << std::endl;
         char dummy[MAX_CREATURE_NAME_LENGTH];
         std::cin >> dummy;
