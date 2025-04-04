@@ -26,17 +26,17 @@ int main() {
 
     
     // create locations
-    Environment Forest1(std::vector<foodType>(veggie1, veggie2), 25);
-    Environment Forest2(std::vector<foodType>(veggie1, veggie2), 20);
+    Environment Forest1(std::vector<foodType>(veggie1, veggie2), 32);
+    Environment Forest2(std::vector<foodType>(veggie1, veggie2), 30);
 
-    Environment Mountains(std::vector<foodType>(veggie3, veggie2), 11);
+    Environment Mountains(std::vector<foodType>(veggie3, veggie2), 17);
 
-    Environment Desert(std::vector<foodType>(veggie3), 3);
+    Environment Desert(std::vector<foodType>(veggie3), 10);
 
-    Environment Grassland1(std::vector<foodType>(veggie1, veggie2), 28);
-    Environment Grassland2(std::vector<foodType>(veggie1, veggie2), 32);
+    Environment Grassland1(std::vector<foodType>(veggie1, veggie2), 40);
+    Environment Grassland2(std::vector<foodType>(veggie1, veggie2), 48);
 
-    Environment Oasis({veggie1, veggie2, veggie3}, 45);
+    Environment Oasis({veggie1, veggie2, veggie3}, 55);
 
     // connect terrain
     Environment::setNeighbors(&Forest1, &Forest2);
