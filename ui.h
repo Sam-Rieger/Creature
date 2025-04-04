@@ -8,13 +8,22 @@
 class UI {
     public:
 
+    /**
+     * @brief Construct a new UI object
+     * 
+     */
     UI();
 
-    void printCreatureInformation(Creature);
+    /**
+     * @brief Prints details about a particular creature
+     * 
+     * @param c 
+     */
+    void printCreatureInformation(Creature * const & c) const;
 
-    void printAction();
+    void printAction(char * message) const;
 
-    void printDeath();
+    void printDeath(Creature * const & c) const;
 
     private:
     // colors
