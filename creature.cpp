@@ -1,6 +1,7 @@
 #include "creature.h"
 #include "environment.h"
 #include <cstring>
+#include <algorithm>
 
 
 Environment * Creature::getLocation()
@@ -41,6 +42,23 @@ bool Creature::checkDead()
 void Creature::die()
 {
     this->_dead = true;
+}
+
+int Creature::getSpeed() const {
+    return this->_speed;
+}
+
+int Creature::getAge() const {
+    return this->_age;
+}
+
+bool Creature::operator < (Creature const &c)
+{
+    if(this->getSpeed() == c.getSpeed()) {
+        return(this->getAge() > c.getAge());
+    } else {
+        return(this->getSpeed() < c.getSpeed());
+    }
 }
 
 Creature::Creature(unsigned int totalDurability, unsigned int strength, unsigned int defense, unsigned int stomachCapacity, 
@@ -161,4 +179,15 @@ void Creature::egg()
     expendEnergy(35);
 //    return Creature(*this->_species);
 
+}
+
+
+
+
+
+
+
+void makeCreatureInitiativeOrder(std::vector<Creature *> &creatures)
+{
+    std::sort(creatures.begin(), creatures.end());
 }

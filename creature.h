@@ -134,6 +134,29 @@ class Creature {
      */
     void die();
 
+    /**
+     * @brief Get speed of creature
+     * 
+     * @return int 
+     */
+    int getSpeed() const;
+
+    /**
+     * @brief Get age of creature
+     * 
+     * @return int 
+     */
+    int getAge() const;
+
+    /**
+     * @brief compares creatures based on speed, and then age.
+     * 
+     * @param c creature to copmpare
+     * @return true 
+     * @return false 
+     */
+    bool operator < (Creature const & c);
+
 
     // ==================================================== PRIVATE MEMBERS ===========================================================
     private:
@@ -177,5 +200,13 @@ class Creature {
 
 
 };
+
+/**
+ * @brief sorts a vector of creature pointers by creature initiative (speed and then youth)
+ * 
+ * @param creatures list to sort
+ */
+void makeCreatureInitiativeOrder(std::vector<Creature * > & creatures);
+
 
 #endif // #ifndef __CREATURE_H__

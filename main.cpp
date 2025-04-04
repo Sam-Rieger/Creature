@@ -110,6 +110,7 @@ int main() {
             (unsigned) atoi(creatureData[10])
 
         });
+
     }
 
 
