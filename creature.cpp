@@ -25,7 +25,8 @@ void Creature::metabolize()
             this->_fat = this->_fatCapacity;
         }
     } else if(this->_stomachFood.getFoodAmount() + this->_fat > this->_metabolism) {
-        this->_fat -= (this->_metabolism - this->_stomachFood.getFoodAmount()); // yes, I do realize this is the same operation as above.  
+        // yes, I do realize this is the same operation as above.  this is for expandability, more than anything
+        this->_fat -= (this->_metabolism - this->_stomachFood.getFoodAmount()); 
     } else {
         this->die();
     }
@@ -50,6 +51,11 @@ int Creature::getSpeed() const {
 
 int Creature::getAge() const {
     return this->_age;
+}
+
+void Creature::getName(char (& output)[MAX_CREATURE_NAME_LENGTH]) const
+{
+    strncpy(output, this->_species->_speciesName, MAX_CREATURE_NAME_LENGTH);
 }
 
 bool Creature::operator < (Creature const &c)

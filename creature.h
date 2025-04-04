@@ -149,6 +149,14 @@ class Creature {
     int getAge() const;
 
     /**
+     * @brief Get the name of this creature's species
+     * 
+     * @param output location to send the string
+     * 
+     */
+    void getName(char (& output)[MAX_CREATURE_NAME_LENGTH]) const;
+
+    /**
      * @brief compares creatures based on speed, and then age.
      * 
      * @param c creature to copmpare
