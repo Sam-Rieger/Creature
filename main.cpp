@@ -154,10 +154,10 @@ int main() {
 
 
 
-            // end of turn metabolism
+            // end of turn metabolism (leading cause of death)
             c->metabolize();
 
-            // delete those which are dead
+            // deletes those which are dead
             if(c->checkDead()) {
                 // TODO: death message
                 delete *iterator; 
