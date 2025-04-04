@@ -25,9 +25,10 @@ class UI {
     /**
      * @brief Formats an action message as an event
      * 
-     * @param message 
+     * @param c creature doing ction
+     * @param message what the creature is doing
      */
-    void printAction(char * const message) const;
+    void printAction(Creature *& c, char * const message) const;
 
     /**
      * @brief Displays an obituary for the creature pointed to by c
