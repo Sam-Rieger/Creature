@@ -13,6 +13,7 @@
 
 // Forward declaration
 class Environment;
+class UI;
 
 class Creature {
 
@@ -103,8 +104,9 @@ class Creature {
     /**
      * @brief make a decision on what to do.  Each creature does its actions, then checks for death.
      * 
+     * @return int - 0: ate food; 1: layed egg; 
      */
-    void makeDecision();
+    int makeDecision(UI * ui);
 
 
     /**

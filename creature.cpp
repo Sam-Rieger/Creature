@@ -1,5 +1,6 @@
 #include "creature.h"
 #include "environment.h"
+#include "ui.h"
 #include <cstring>
 #include <algorithm>
 
@@ -191,19 +192,45 @@ void Creature::expendEnergy(unsigned int energy)
     }
 }
 
-void Creature::egg()
-{
+void Creature::egg() {
     // laying eggs is hard.  this provides for death during childbirth, too.
     expendEnergy(35);
 //    return Creature(*this->_species);
 
 }
 
+int Creature::makeDecision(UI * ui) {
+
+    // first, check if it can reproduce?
+
+    if(_fat + _stomachFood.getFoodAmount() > 35 + _metabolism) {
+        this->egg();
+        ui->printAction(this, "Lays an egg");
+        return 1;
+    }
+    // next, will look for food within this region
+    for(foodType ft : _edibleFoods) {
+       for(Food *&f : _location->getFood()) {
+            if(ft == f->getFoodType()) {
+                // can eat
+                if(f->getFoodAmount() > this->_metabolism) {
+                    // worth spending a turn eating
+                    this->eat(f);
+                    return 0;
+                }
+            }
+       }
+    }
+
+    
 
 
 
 
 
+
+    return 0;
+}
 
 void makeCreatureInitiativeOrder(std::vector<Creature *> &creatures)
 {

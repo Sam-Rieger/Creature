@@ -216,7 +216,7 @@ int main() {
         ui.printPrompt("Type \"DETAILS\" to view specific creature information, or anything else to skip.", input);
 
         if(strncmp("DETAILS", input, 9) == 0) {
-            for(Creature *&c : creatures) {
+            for(Creature * c : creatures) {
                 ui.printCreatureInformation(c);
             }
         }

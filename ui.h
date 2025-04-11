@@ -1,13 +1,19 @@
 #ifndef __UI_H__
 #define __UI_H__
 
-#include "creature.h"
+//#include "creature.h"
+
+class Creature;
 
 // largest cin input allowed
 #define MAX_INPUT_LENGTH (64)
 
 // largest allowed length of text for prompt
 #define MAX_PROMPT_LENGTH (512)
+
+// max characters in a creature's name
+#define MAX_CREATURE_NAME_LENGTH (32)
+
 
 class UI {
     public:
@@ -23,7 +29,7 @@ class UI {
      * 
      * @param c 
      */
-    void printCreatureInformation(Creature * const & c) const;
+    void printCreatureInformation(Creature * const c) const;
 
     /**
      * @brief Formats an action message as an event
@@ -31,14 +37,14 @@ class UI {
      * @param c creature doing ction
      * @param message what the creature is doing
      */
-    void printAction(Creature *& c, char const * message) const;
+    void printAction(Creature * c, char const * message) const;
 
     /**
      * @brief Displays an obituary for the creature pointed to by c
      * 
      * @param c the one who was lost
      */
-    void printDeath(Creature * const & c) const;
+    void printDeath(Creature * const  c) const;
 
     /**
      * @brief Prompts the user, fills in a referenced string with the response.

@@ -1,4 +1,5 @@
 #include "ui.h"
+#include "creature.h"
 #include <iostream>
 #include <cstring>
 
@@ -11,12 +12,12 @@ UI::UI() {
     // nothing to construct, really.  This framework could be used for custom UI options ins the future.
 }
 
-void UI::printCreatureInformation(Creature * const & c) const
+void UI::printCreatureInformation(Creature * const c) const
 {
     cout << "Creature information here" << endl;
 }
 
-void UI::printAction(Creature *& c, char const * message) const
+void UI::printAction(Creature * c, char const * message) const
 {
 
     char name[MAX_CREATURE_NAME_LENGTH + 1] = {'\0'};
@@ -25,8 +26,7 @@ void UI::printAction(Creature *& c, char const * message) const
     cout << _yellow << "ACTION: Creature of species " << _blue << name << _yellow << " " << message << _default << endl;
 }
 
-void UI::printDeath(Creature * const & c) const
-{
+void UI::printDeath(Creature * const c) const {
 
     char name[MAX_CREATURE_NAME_LENGTH + 1] = {'\0'};
     c->getName(name);
