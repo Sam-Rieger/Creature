@@ -10,6 +10,7 @@
 #include "creature.h"
 #include "food.h"
 #include "environment.h"
+#include "ui.h"
 #include <iostream>
 #include <cstring>
 #include <fstream>
@@ -22,6 +23,10 @@ using std::endl;
 int main() {
 
     // All of the following is extensible, just limited to this specific world to avoid scope creep.
+
+    // =================================================== SETUP UI ===========================================================
+
+    UI ui = UI();
     
     // =============================================== SETUP ENVIRONMENT ======================================================
 
@@ -96,7 +101,7 @@ int main() {
         std::vector<foodType> edible = {foodType::veggie1, foodType::veggie2, foodType::veggie3, foodType::softMeat};
 
         
-
+        // constructs a species based on loaded data
         species.push_back(new Creature {
             (unsigned) atoi(creatureData[1]),
             (unsigned) atoi(creatureData[2]),
@@ -159,7 +164,7 @@ int main() {
 
             // deletes those which are dead
             if(c->checkDead()) {
-                // TODO: death message
+                ui.printDeath(c);
                 delete *iterator; 
                 iterator = creatures.erase(iterator);
             } else {
@@ -171,11 +176,25 @@ int main() {
         }
 
         // TODO: add details options
-        // TODO replace with UI function
-        cout << "Type anything else to execute another timestep, or type \"HALT\" to end it." << std::endl;
-        char dummy[MAX_CREATURE_NAME_LENGTH];
-        std::cin >> dummy;
-        if(strncmp(dummy, "HALT", 5) == 0) {
+
+        char input[MAX_INPUT_LENGTH + 1] = {'\0'};
+
+        ui.printPrompt("Type \"DETAILS\" to view specific creature information, or anything else to skip.", input);
+
+        if(strncmp("DETAILS", input, 9)) {
+            for(Creature *&c : species) {
+                ui.printCreatureInformation(c);
+            }
+        }
+
+        // +1 because of null terminator; the actual max input length is 64, but we need the 65th.  personal preference for notation (anyone editing the macros does not need to consider terminators)
+        
+
+
+        input[0] = '\0'; // works because string
+        ui.printPrompt("Type anything else to execute another timestep, or type \"HALT\" to end it.", input);
+
+        if(strncmp(input, "HALT", 5) == 0) {
             break;
         }
     }
