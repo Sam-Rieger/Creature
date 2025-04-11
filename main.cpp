@@ -11,24 +11,29 @@
 #include "food.h"
 #include "environment.h"
 #include "ui.h"
+#include <random>
 #include <iostream>
 #include <cstring>
 #include <fstream>
 #include <limits>
 
 
-using std::cout;
-using std::endl;
-
 int main() {
 
-    // All of the following is extensible, just limited to this specific world to avoid scope creep.
+    
 
     // =================================================== SETUP UI ===========================================================
 
     UI ui = UI();
+
+
+    // serves as the input string for UI operations.
+    char input[MAX_INPUT_LENGTH + 1] = {'\0'};
     
     // =============================================== SETUP ENVIRONMENT ======================================================
+
+    // All of the following is extensible/configurable, just limited to this specific world to avoid scope creep.
+    // the eventual implementation would probably include a file load system for worlds, as well as a world/creature editor.
 
     
     // create locations
@@ -76,7 +81,7 @@ int main() {
     fin.open("./data/speciesData.spdx");
 
     if( fin.fail() ) {
-        std::cerr << "Datafile couldn't be opened" << endl;
+        std::cerr << "Datafile couldn't be opened" << std::endl;
         return EXIT_FAILURE;
     }
 
@@ -123,12 +128,31 @@ int main() {
 
 
     
-    // ====================================================== DYNAMIC STUFF HERE ========================================================
+    // ====================================================== DYNAMIC CREATURES ========================================================
 
     // holds every living creature
     std::vector<Creature *> creatures;
 
     /** @todo: for each species, let the user input initial population and location */
+
+    for(Creature *& s : species) {
+        input[0] = '\0'; // works because string is null-terminated
+        char name[MAX_CREATURE_NAME_LENGTH] = {'\0'};
+
+        s->getName(name);
+
+        char prompt[MAX_PROMPT_LENGTH + 1] = "How many creatures of type ";
+
+        strncat(prompt, name, MAX_PROMPT_LENGTH);
+        strncat(prompt, " would you like to start with?", MAX_PROMPT_LENGTH);
+
+        ui.printPrompt(prompt, input);
+
+        for(int i = 0; i < atoi(input); ++i)    {
+            std::cout << "creeture" << std::endl;
+            creatures.push_back(new Creature(*s));
+        }
+    }
 
     // ========================================================= RUN SIMULATION ========================================================
 
@@ -177,12 +201,12 @@ int main() {
 
         // TODO: add details options
 
-        char input[MAX_INPUT_LENGTH + 1] = {'\0'};
-
+        
+        input[0] = '\0'; // works because string is null-terminated
         ui.printPrompt("Type \"DETAILS\" to view specific creature information, or anything else to skip.", input);
 
-        if(strncmp("DETAILS", input, 9)) {
-            for(Creature *&c : species) {
+        if(strncmp("DETAILS", input, 9) == 0) {
+            for(Creature *&c : creatures) {
                 ui.printCreatureInformation(c);
             }
         }
@@ -191,7 +215,7 @@ int main() {
         
 
 
-        input[0] = '\0'; // works because string
+        input[0] = '\0'; // works because string is null-terminated
         ui.printPrompt("Type anything else to execute another timestep, or type \"HALT\" to end it.", input);
 
         if(strncmp(input, "HALT", 5) == 0) {
