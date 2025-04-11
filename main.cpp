@@ -156,7 +156,7 @@ int main() {
         char prompt[MAX_PROMPT_LENGTH + 1] = "How many creatures of type \033[34m";
 
         strncat(prompt, name, MAX_PROMPT_LENGTH);
-        strncat(prompt, "\033[35m would you like to start with?", MAX_PROMPT_LENGTH);
+        strncat(prompt, "\033[0m would you like to start with?", MAX_PROMPT_LENGTH);
 
         ui.printPrompt(prompt, input);
 
@@ -213,7 +213,7 @@ int main() {
            
             
         }
-    
+
         // TODO: add details options
 
         

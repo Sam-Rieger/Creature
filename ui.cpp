@@ -65,7 +65,7 @@ void UI::printDeath(Creature * const c) const {
     char locationName[MAX_ENVIRONMENT_NAME_LENGTH] = {'\0'};
     c->getLocation()->getName(locationName);
 
-    cout << _red << "DEATH:" << _default << " Creature of species " << _blue << name << _default << " has died in " << _green << locationName
+    cout << _red << "DEATH: " << _default << " Creature of species " << _blue << name << _default << " has died in " << _green << locationName
     << _default << " at age " << _green << c->getAge() << endl;
 
 }
@@ -83,6 +83,6 @@ void UI::printPrompt(char const * prompt, char (& output)[MAX_INPUT_LENGTH + 1])
 
 void UI::printTimeTick(unsigned int tick) {
 
-    cout << _green << "YEAR: " << _default << " it is currently year " << _blue << tick << _default << endl;
+    cout << endl << endl << endl << _green << "DATE:  " << _default << " It is currently tick " << _blue << tick << _default << endl;
 
 }
