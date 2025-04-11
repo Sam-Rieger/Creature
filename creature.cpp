@@ -199,7 +199,7 @@ void Creature::egg() {
 
 }
 
-int Creature::makeDecision(UI * ui) {
+int Creature::makeDecision(UI * ui, std::vector<Creature*> & creatures) {
 
     // first, check if it can reproduce?
 
@@ -216,10 +216,20 @@ int Creature::makeDecision(UI * ui) {
                 if(f->getFoodAmount() > this->_metabolism) {
                     // worth spending a turn eating
                     this->eat(f);
+                    // TODO: add food print
                     return 0;
                 }
             }
        }
+    }
+
+    if(std::find(_edibleFoods.begin(), _edibleFoods.end(), foodType::softMeat) != _edibleFoods.end()) {
+        //predator!
+        for(Creature * c : creatures) {
+            if(c->getLocation() == this->_location) {
+                this->hunt(c);
+            }
+        }
     }
 
     

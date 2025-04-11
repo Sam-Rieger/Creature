@@ -4,6 +4,7 @@
 //#include "creature.h"
 
 class Creature;
+class Food;
 
 // largest cin input allowed
 #define MAX_INPUT_LENGTH (64)
@@ -38,6 +39,22 @@ class UI {
      * @param message what the creature is doing
      */
     void printAction(Creature * c, char const * message) const;
+
+    /**
+     * @brief prints that a creature is eating a food
+     * 
+     * @param c creature
+     * @param food food
+     */
+    void printEatingAction(Creature * c, Food * food);
+
+    /**
+     * @brief prints that creature 1 is fighting creature 2
+     * 
+     * @param c1 
+     * @param c2 
+     */
+    void printFightingAction(Creature * c1, Creature * c2);
 
     /**
      * @brief Displays an obituary for the creature pointed to by c

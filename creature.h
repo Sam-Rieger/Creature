@@ -103,10 +103,12 @@ class Creature {
 
     /**
      * @brief make a decision on what to do.  Each creature does its actions, then checks for death.
+     * @param ui ui object to interface with
+     * @param creatures vector of creatures that exist (for eating purposes)
      * 
      * @return int - 0: ate food; 1: layed egg; 
      */
-    int makeDecision(UI * ui);
+    int makeDecision(UI * ui, std::vector<Creature*> & creatures);
 
 
     /**
