@@ -184,10 +184,7 @@ int main() {
 
             // creature actions, one at a time (and print)
 
-
-
-
-                // TODO: grab the MEAT after hunting
+            c->makeDecision(&ui, creatures);
 
 
 

@@ -5,6 +5,7 @@
 Environment::Environment(std::vector<foodType> const &foodTypes, int abundance, char const * name) {
     this->_foodTypes = foodTypes;
     this->_foodFactor = abundance;
+    strcpy(this->_name, name);
 }
 
 void Environment::setNeighbors(Environment *E1, Environment *E2)

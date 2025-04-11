@@ -216,7 +216,7 @@ int Creature::makeDecision(UI * ui, std::vector<Creature*> & creatures) {
                 if(f->getFoodAmount() > this->_metabolism) {
                     // worth spending a turn eating
                     this->eat(f);
-                    // TODO: add food print
+                    ui->printEatingAction(this, f);
                     return 0;
                 }
             }
@@ -228,6 +228,7 @@ int Creature::makeDecision(UI * ui, std::vector<Creature*> & creatures) {
         for(Creature * c : creatures) {
             if(c->getLocation() == this->_location) {
                 this->hunt(c);
+                ui->printFightingAction(this, c);
             }
         }
     }
