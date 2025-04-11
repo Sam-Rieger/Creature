@@ -16,7 +16,7 @@ void UI::printCreatureInformation(Creature * const & c) const
     cout << "Creature information here" << endl;
 }
 
-void UI::printAction(Creature *& c, char * const message) const
+void UI::printAction(Creature *& c, char const * message) const
 {
 
     char name[MAX_CREATURE_NAME_LENGTH] = {};
@@ -36,7 +36,7 @@ void UI::printDeath(Creature * const & c) const
 
 }
 
-void UI::printPrompt(char * const prompt, char (& output)[MAX_INPUT_LENGTH + 1]) const
+void UI::printPrompt(char const * prompt, char (& output)[MAX_INPUT_LENGTH + 1]) const
 {
     cout << _magenta << "PROMPT: " << prompt << ": " << _default;
 

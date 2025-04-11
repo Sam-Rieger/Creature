@@ -31,7 +31,7 @@ class UI {
      * @param c creature doing ction
      * @param message what the creature is doing
      */
-    void printAction(Creature *& c, char * const message) const;
+    void printAction(Creature *& c, char const * message) const;
 
     /**
      * @brief Displays an obituary for the creature pointed to by c
@@ -46,7 +46,7 @@ class UI {
      * @param prompt what to prompt the user
      * @param output location for return string
      */
-    void printPrompt(char * const prompt, char (& output)[MAX_INPUT_LENGTH + 1]) const;
+    void printPrompt(char const * prompt, char (& output)[MAX_INPUT_LENGTH + 1]) const;
 
     private:
     // colors
