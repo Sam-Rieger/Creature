@@ -203,7 +203,7 @@ int Creature::makeDecision(UI * ui, std::vector<Creature*> & creatures) {
 
     // first, check if it can reproduce?
 
-    if(_fat + _stomachFood.getFoodAmount() > 35 + _metabolism) {
+    if((unsigned) (_fat + _stomachFood.getFoodAmount()) > 35U + _metabolism) {
         this->egg();
         ui->printAction(this, "Lays an egg");
         return 1;
@@ -213,7 +213,7 @@ int Creature::makeDecision(UI * ui, std::vector<Creature*> & creatures) {
        for(Food *&f : _location->getFood()) {
             if(ft == f->getFoodType()) {
                 // can eat
-                if(f->getFoodAmount() > this->_metabolism) {
+                if((unsigned) f->getFoodAmount() > this->_metabolism) {
                     // worth spending a turn eating
                     this->eat(f);
                     ui->printEatingAction(this, f);
@@ -229,6 +229,7 @@ int Creature::makeDecision(UI * ui, std::vector<Creature*> & creatures) {
             if(c->getLocation() == this->_location) {
                 this->hunt(c);
                 ui->printFightingAction(this, c);
+                return 3;
             }
         }
     }

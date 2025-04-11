@@ -184,15 +184,17 @@ int main() {
 
             // creature actions, one at a time (and print)
 
-            c->makeDecision(&ui, creatures);
+            if(!c->checkDead()) {
+                c->makeDecision(&ui, creatures);
+                c->metabolize();
+            }
 
 
 
 
 
             // end of turn metabolism (leading cause of death)
-            c->metabolize();
-
+            
             // deletes those which are dead
             if(c->checkDead()) {
                 ui.printDeath(c);
