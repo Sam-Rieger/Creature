@@ -6,6 +6,9 @@
 // largest cin input allowed
 #define MAX_INPUT_LENGTH (64)
 
+// largest allowed length of text for prompt
+#define MAX_PROMPT_LENGTH (512)
+
 class UI {
     public:
 

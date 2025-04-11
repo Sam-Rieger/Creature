@@ -11,6 +11,11 @@ UI::UI() {
     // nothing to construct, really.  This framework could be used for custom UI options ins the future.
 }
 
+void UI::printCreatureInformation(Creature * const & c) const
+{
+    cout << "Creature information here" << endl;
+}
+
 void UI::printAction(Creature *& c, char * const message) const
 {
 
