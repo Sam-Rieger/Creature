@@ -5,6 +5,9 @@
 #include <vector>
 #include "food.h"
 
+// upper limit on creatures.  Memory overhead.
+//#define MAX_NUMBER_CREATURES (128)
+
 // max characters in a creature's name
 #define MAX_CREATURE_NAME_LENGTH (32)
 

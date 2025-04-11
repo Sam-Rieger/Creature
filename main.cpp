@@ -76,6 +76,8 @@ int main() {
     // holds each species template
     std::vector<Creature *> species;
 
+    //species.reserve((size_t) (sizeof(Creature*) * MAX_NUMBER_CREATURES));
+
     // load species file
     std::ifstream fin;
     fin.open("./data/speciesData.spdx");
@@ -131,7 +133,7 @@ int main() {
     std::mt19937 mt(rd());
 
     // chooses random locations!
-    std::uniform_int_distribution<int>randomLocation(0, (int) (sizeof(locations) / sizeof(locations[0])));
+    std::uniform_int_distribution<int>randomLocation(0, (int) ((sizeof(locations) / sizeof(locations[0]) - 1)) );
     
     // ====================================================== DYNAMIC SETUP ========================================================
 
@@ -166,9 +168,11 @@ int main() {
 
     // ========================================================= RUN SIMULATION ========================================================
 
-
+    int tick = 0;
 
     while(true) {
+
+        ui.printTimeTick(++tick);
 
         // resort creatures based on their speed/age
 
@@ -182,7 +186,9 @@ int main() {
 
             Creature * c = (*iterator);
 
-            // creature actions, one at a time (and print)
+            // creature actions, one at a time based on speed/age, but only if alive
+
+            //c->die();
 
             if(!c->checkDead()) {
                 c->makeDecision(&ui, creatures);
@@ -207,7 +213,7 @@ int main() {
            
             
         }
-
+    
         // TODO: add details options
 
         

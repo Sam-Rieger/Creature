@@ -80,3 +80,9 @@ void UI::printPrompt(char const * prompt, char (& output)[MAX_INPUT_LENGTH + 1])
 
     strncpy(output, input, MAX_INPUT_LENGTH);
 }
+
+void UI::printTimeTick(unsigned int tick) {
+
+    cout << _green << "YEAR: " << _default << " it is currently year " << _blue << tick << _default << endl;
+
+}

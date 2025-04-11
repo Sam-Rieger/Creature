@@ -71,6 +71,12 @@ class UI {
      */
     void printPrompt(char const * prompt, char (& output)[MAX_INPUT_LENGTH + 1]) const;
 
+    /**
+     * @brief Prints current date
+     * 
+     */
+    void printTimeTick(unsigned int tick);
+
     private:
     // colors
     static char constexpr _default[] = "\033[0m"; // normal text
@@ -79,6 +85,7 @@ class UI {
     static char constexpr _blue[] = "\033[34m"; // species identifier
     static char constexpr _yellow[] = "\033[33m"; // for creature actions
     static char constexpr _magenta[] = "\033[35m"; // for user inputs
+    
 
 
 };
