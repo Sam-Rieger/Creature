@@ -1,5 +1,6 @@
 #include "environment.h"
 #include "creature.h"
+#include <cstring>
 
 Environment::Environment(std::vector<foodType> const &foodTypes, int abundance, char const * name) {
     this->_foodTypes = foodTypes;
