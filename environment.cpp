@@ -1,7 +1,7 @@
 #include "environment.h"
 #include "creature.h"
 
-Environment::Environment(std::vector<foodType> const &foodTypes, int abundance) {
+Environment::Environment(std::vector<foodType> const &foodTypes, int abundance, char const * name) {
     this->_foodTypes = foodTypes;
     this->_foodFactor = abundance;
 }
@@ -22,6 +22,12 @@ void Environment::updateCreatureList(std::vector<Creature *> creatures)
     }
 }
 */
+
+void Environment::getName(char (& output)[MAX_ENVIRONMENT_NAME_LENGTH]) const
+{
+    strncpy(output, this->_name, MAX_ENVIRONMENT_NAME_LENGTH);
+}
+
 
 
 std::vector<Environment *> Environment::getConnections() {

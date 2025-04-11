@@ -4,8 +4,12 @@
 #include <vector>
 #include "food.h"
 
+#define MAX_ENVIRONMENT_NAME_LENGTH (64)
+
+
 // Forward declaration
 class Creature;
+
 
 class Environment {
     public:
@@ -14,9 +18,10 @@ class Environment {
      * @brief Construct a new Environment object
      * 
      * @param foodTypes what grows here
-     * @param abundance how much
+     * @param abundance how much of it does
+     * @param name what this place is called
      */
-    Environment(std::vector<foodType> const & foodTypes, int abundance);
+    Environment(std::vector<foodType> const & foodTypes, int abundance, char const * name);
 
     /**
      * @brief Makes E1 and E2 connected
@@ -52,13 +57,12 @@ class Environment {
     std::vector<Food *> getFood();
 
     /**
-     * @brief birth, as it says, a creature
+     * @brief Get the name of this location
      * 
-     * @param species the species to enbirthinate
+     * @param output location to send the string
+     * 
      */
-    void birthACreature(Creature * species);
-
-    
+    void getName(char (& output)[MAX_ENVIRONMENT_NAME_LENGTH]) const;
 
     private:
     std::vector<Environment*> _connections; // environemnts connected to this one
@@ -66,7 +70,7 @@ class Environment {
     std::vector<foodType> _foodTypes; // what food grows here
     std::vector<Food *> _foods; // pointers to all the foods here
     int _foodFactor; // abundance of food (growth rate per turn)
-
+    char _name[MAX_ENVIRONMENT_NAME_LENGTH]; // name
 
 };
 
