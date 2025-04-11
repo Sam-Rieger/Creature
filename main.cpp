@@ -99,7 +99,6 @@ int main() {
 
         for(int j = 0; j < 11; ++j) {
             fin.getline(creatureData[j], MAX_DATA_MEMBER_LENGTH);
-            //cout << j << " " <<creatureData[j] << endl;
         }
 
         // TODO: replace with the actually edible food
@@ -139,21 +138,27 @@ int main() {
     // holds every living creature
     std::vector<Creature *> creatures;
 
+    char name[MAX_CREATURE_NAME_LENGTH + 1] = {'\0'};
+
     for(Creature *& s : species) {
         input[0] = '\0'; // works because string is null-terminated
-        char name[MAX_CREATURE_NAME_LENGTH] = {'\0'};
+
+        for(int i = 0; i < 33; ++i) {
+            name[i] = '\0';
+        }
 
         s->getName(name);
 
-        char prompt[MAX_PROMPT_LENGTH + 1] = "How many creatures of type ";
+
+
+        char prompt[MAX_PROMPT_LENGTH + 1] = "How many creatures of type \033[34m";
 
         strncat(prompt, name, MAX_PROMPT_LENGTH);
-        strncat(prompt, " would you like to start with?", MAX_PROMPT_LENGTH);
+        strncat(prompt, "\033[35m would you like to start with?", MAX_PROMPT_LENGTH);
 
         ui.printPrompt(prompt, input);
 
         for(int i = 0; i < atoi(input); ++i)    {
-            //std::cout << "creeture" << std::endl;
             creatures.push_back(new Creature(*s));
             creatures.back()->setLocation(locations[randomLocation(mt)]);
         }

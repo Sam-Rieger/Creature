@@ -161,7 +161,7 @@ class Creature {
      * @param output location to send the string
      * 
      */
-    void getName(char (& output)[MAX_CREATURE_NAME_LENGTH]) const;
+    void getName(char (& output)[MAX_CREATURE_NAME_LENGTH + 1]) const;
 
     /**
      * @brief compares creatures based on speed, and then age.

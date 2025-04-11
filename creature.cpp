@@ -58,9 +58,9 @@ int Creature::getAge() const {
     return this->_age;
 }
 
-void Creature::getName(char (& output)[MAX_CREATURE_NAME_LENGTH]) const
+void Creature::getName(char (& output)[MAX_CREATURE_NAME_LENGTH + 1]) const
 {
-    strncpy(output, this->_species->_speciesName, MAX_CREATURE_NAME_LENGTH);
+    strcpy(output, this->_speciesName);
 }
 
 bool Creature::operator < (Creature const &c)
@@ -75,6 +75,8 @@ bool Creature::operator < (Creature const &c)
 Creature::Creature(unsigned int totalDurability, unsigned int strength, unsigned int defense, unsigned int stomachCapacity, 
 unsigned int fatCapacity, char const *name, unsigned int oldAge, unsigned int speed, std::vector<foodType> edibleFoods, unsigned int metabolism) {
 
+    this->_speciesName[0] = '\0';
+
     this->_totalDurability = totalDurability;
     this->_strength = strength;
     this->_defense = defense;
@@ -86,25 +88,30 @@ unsigned int fatCapacity, char const *name, unsigned int oldAge, unsigned int sp
     this->_edibleFoods = edibleFoods;
     this->_metabolism = metabolism;
 
+    this->_age = 999;
+    
+
 
 
 }
 
 Creature::Creature(Creature &species) {
 
+    // set progenitor species
+    this->_species = &species;
+
+
     this->_totalDurability = species._totalDurability;
     this->_strength = species._strength;
     this->_defense = species._defense;
     this->_stomachCapacity = species._stomachCapacity;
     this->_fatCapacity = species._fatCapacity;
-    strncpy(this->_speciesName, species._speciesName, MAX_CREATURE_NAME_LENGTH);
+    strcpy(this->_speciesName, species._speciesName);
     this->_old = species._old;
     this->_speed = species._speed;
     this->_edibleFoods = species._edibleFoods;
 
-    // set progenitor species
-    this->_species = &species;
-
+    
     // set up other values
     this->_durability = this->_totalDurability;
     this->_age = 0;
