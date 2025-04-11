@@ -9,6 +9,11 @@ Environment * Creature::getLocation()
     return this->_location;
 }
 
+void Creature::setLocation(Environment *location)
+{
+    this->_location = location;
+}
+
 void Creature::metabolize()
 {
 

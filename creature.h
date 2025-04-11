@@ -114,6 +114,13 @@ class Creature {
      */
     Environment* getLocation();
 
+    /**
+     * @brief Set the location of the creature
+     * 
+     * @param location THe environment to set the location to
+     */
+    void setLocation(Environment* location);
+
 
     /**
      * @brief process food, excess into fat.  Called at end of turn, also checks for death.

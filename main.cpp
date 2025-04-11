@@ -124,16 +124,20 @@ int main() {
     }
 
 
+    // ================================================= SETUP RANDOM ==========================================================
 
+    // used almost entirely in dynamic setup, this simulation is nearly entirely determinist. 
 
+    std::random_device rd;
+    std::mt19937 mt(rd());
 
+    // chooses random locations!
+    std::uniform_int_distribution<int>randomLocation(0, (int) (sizeof(locations) / sizeof(locations[0])));
     
-    // ====================================================== DYNAMIC CREATURES ========================================================
+    // ====================================================== DYNAMIC SETUP ========================================================
 
     // holds every living creature
     std::vector<Creature *> creatures;
-
-    /** @todo: for each species, let the user input initial population and location */
 
     for(Creature *& s : species) {
         input[0] = '\0'; // works because string is null-terminated
@@ -149,8 +153,9 @@ int main() {
         ui.printPrompt(prompt, input);
 
         for(int i = 0; i < atoi(input); ++i)    {
-            std::cout << "creeture" << std::endl;
+            //std::cout << "creeture" << std::endl;
             creatures.push_back(new Creature(*s));
+            creatures.back()->setLocation(locations[randomLocation(mt)]);
         }
     }
 
