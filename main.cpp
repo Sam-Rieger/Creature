@@ -44,7 +44,7 @@ int main() {
 
     Environment Desert(std::vector<foodType>(veggie3), 10, "Arizona");
 
-    Environment Grassland1(std::vector<foodType>(veggie1, veggie2), 40, "The Nation of Africa");
+    Environment Grassland1(std::vector<foodType>(veggie1, veggie2), 40, "The Savannah");
     Environment Grassland2(std::vector<foodType>(veggie1, veggie2), 48, "The Sprawling Prarie");
 
     Environment Oasis({veggie1, veggie2, veggie3}, 55, "The Oasis");
