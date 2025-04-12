@@ -87,13 +87,11 @@ int main() {
         return EXIT_FAILURE;
     }
 
-    int n;
+    int n; // number of species in file
 
     fin >> n;
 
     fin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-    
 
     for(int i = 0; i < n; ++i) {
 
@@ -109,7 +107,7 @@ int main() {
             // adds enum types to edible foods
             //std::cout << c << std::endl;
             if(c >= '0' && c <= '9') {
-
+                // is digit
                 edible.push_back((foodType) (c - '0'));
             }
         }
@@ -133,7 +131,7 @@ int main() {
     }
 
 
-    // ================================================= SETUP RANDOM ==========================================================
+    // =================================================== SETUP RANDOM ==========================================================
 
     // used almost entirely in dynamic setup, this simulation is nearly entirely determinist. 
 
@@ -159,7 +157,7 @@ int main() {
 
         s->getName(name);
 
-
+        // get population from user
 
         char prompt[MAX_PROMPT_LENGTH + 1] = "How many creatures of type \033[34m";
 
@@ -198,7 +196,7 @@ int main() {
         }   
 
 
-        // essentially a for loop, but allows for reindexing
+        // essentially a for loop, but allows for reindexing iterators upon removals
         auto iterator = creatures.begin();        
 
         while (iterator != creatures.end()) {
@@ -213,7 +211,10 @@ int main() {
                         creatureQueue.push_back(c->getParent());
                         locationQueue.push_back(c->getLocation());
                         break;
+                    case 2:
                     case 3:
+                    default:
+                    // provided for future expansion
                         break;
                 }
 
@@ -282,7 +283,7 @@ int main() {
         // +1 because of null terminator; the actual max input length is 64, but we need the 65th.  personal preference for notation (anyone editing the macros does not need to consider terminators)
         
         input[0] = '\0'; // works because string is null-terminated
-        ui.printPrompt("Type anything else to execute another timestep, or type \"HALT\" to end it.", input);
+        ui.printPrompt("Type anything else to execute another timestep, or type \"HALT\" to end simulation", input);
 
         if(strncmp(input, "HALT", 5) == 0) {
             break;
@@ -293,6 +294,7 @@ int main() {
 
     // ============================================================ END =============================================================
 
+    // clean up free store
 
     for(Creature *&c : species) {
         if(c != nullptr) {
