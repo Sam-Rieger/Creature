@@ -15,7 +15,17 @@ UI::UI() {
 }
 
 void UI::printCreatureInformation(Creature * const c) const {
-    cout << "Creature information here" << endl;
+
+    char name[MAX_CREATURE_NAME_LENGTH + 1] = {'\0'};
+    c->getName(name);
+
+    char locationName[MAX_ENVIRONMENT_NAME_LENGTH] = {'\0'};
+    c->getLocation()->getName(locationName);
+
+
+    cout << _green << "CREATURE:  " << _default << "Species: " << _blue << name << _default << " Age: " << _green << c->getAge() << _default
+    << " Durability: " << _red << c->getHealth() << _default << " Location: " << _green << locationName << _default
+    << endl;
 }
 
 void UI::printAction(Creature * c, char const * message) const {

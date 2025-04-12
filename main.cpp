@@ -265,12 +265,9 @@ int main() {
                     }
                     
                 } else if(strncmp("IND", input, 4) == 0) {
-
-
                     for(Creature * c : creatures) {
                         ui.printCreatureInformation(c);
                     }
-
 
                 } else {
                     break;

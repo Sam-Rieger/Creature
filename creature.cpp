@@ -55,6 +55,11 @@ int Creature::getAge() const {
     return this->_age;
 }
 
+int Creature::getHealth() const
+{
+    return this->_durability;
+}
+
 void Creature::getName(char (& output)[MAX_CREATURE_NAME_LENGTH + 1]) const {
     strcpy(output, this->_speciesName);
 }

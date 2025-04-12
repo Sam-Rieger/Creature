@@ -169,6 +169,13 @@ class Creature {
     int getAge() const;
 
     /**
+     * @brief Get the durability of the creature
+     * 
+     * @return the durability 
+     */
+    int getHealth() const;
+
+    /**
      * @brief Get the name of this creature's species
      * 
      * @param output location to send the string
