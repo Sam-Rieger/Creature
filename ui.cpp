@@ -24,7 +24,7 @@ void UI::printCreatureInformation(Creature * const c) const {
 
 
     cout << _green << "CREATURE:  " << _default << "Species: " << _blue << name << _default << " Age: " << _green << c->getAge() << _default
-    << " Durability: " << _red << c->getHealth() << _default << " Location: " << _green << locationName << _default
+    << " Durability: " << _red << c->getHealth() << _default << " Energy: " << _yellow << c->getFoodFromBody() << _default<< " Location: " << _green << locationName << _default
     << endl;
 }
 

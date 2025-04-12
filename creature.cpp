@@ -147,7 +147,7 @@ void Creature::eat(Food * food)
 
 int Creature::getFoodFromBody()
 {
-    return this->_fat + this->_stomachFood.getFoodAmount() + 5;
+    return ((int) this->_fat) + this->_stomachFood.getFoodAmount();
 }
 
 void Creature::hunt(Creature * enemy) {
