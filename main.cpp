@@ -174,6 +174,9 @@ int main() {
         // pointer to species of creatures to be hatched
         std::vector<Creature*> creatureQueue = {};
 
+        // pointer to location of creatures to be hatched
+        std::vector<Environment*> locationQueue = {};
+
         ui.printTimeTick(++tick);
 
         // resort creatures based on their speed/age
@@ -196,12 +199,14 @@ int main() {
 
             // creature actions, one at a time based on speed/age, but only if alive
 
-            //c->die();
-
             if(!c->checkDead()) {
                 if(c->makeDecision(&ui, creatures) == 1) {
                     creatureQueue.push_back(c->getParent());
+                    locationQueue.push_back(c->getLocation());
                 }
+
+
+                // end of turn metabolism (leading cause of death)
                 c->metabolize();
             }
 
@@ -209,7 +214,7 @@ int main() {
 
 
 
-            // end of turn metabolism (leading cause of death)
+            
             
             // deletes those which are dead
             if(c->checkDead()) {
@@ -224,9 +229,9 @@ int main() {
             
         }
 
-        for(Creature * c : creatureQueue) {
-            std::cout << "queued age: " << c->getAge() << std::endl;
-            creatures.push_back(new Creature(*c));
+        for(int i = 0; i < creatureQueue.size(); ++i) {
+            creatures.push_back(new Creature(*creatureQueue.at(i)));
+            creatures.back()->setLocation(locationQueue.at(i));
         }
 
         
