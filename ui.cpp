@@ -46,7 +46,7 @@ void UI::printEatingAction(Creature * c, Food * food) {
     char locationName[MAX_ENVIRONMENT_NAME_LENGTH] = {'\0'};
     c->getLocation()->getName(locationName);
 
-    cout << _yellow << "ACTION: " << _default << "Creature of species " << _blue << name << _default << " Eats a food of type " << _green << foods[(int) food->getFoodType()] 
+    cout << _yellow << "ACTION: " << _default << "Creature of species " << _blue << name << _yellow << " eats" << _default << " a food of type " << _green << foods[(int) food->getFoodType()] 
     << _default << " in " << _green << locationName << _default << endl;
 
 }
@@ -63,7 +63,7 @@ void UI::printFightingAction(Creature * c1, Creature * c2) {
     c1->getLocation()->getName(locationName);
 
 
-    cout << _yellow << "ACTION: " << _default << "Creature of species " << _blue << name1 << _default << " hunts creature of species " << _blue << name2 << _default 
+    cout << _yellow << "ACTION: " << _default << "Creature of species " << _blue << name1 << _yellow << " hunts" <<_default << " creature of species " << _blue << name2 << _default 
     << " in " << _green << locationName << _default << endl;
 }
 
@@ -75,7 +75,7 @@ void UI::printDeath(Creature * const c) const {
     char locationName[MAX_ENVIRONMENT_NAME_LENGTH] = {'\0'};
     c->getLocation()->getName(locationName);
 
-    cout << _red << "DEATH: " << _default << " Creature of species " << _blue << name << _default << " has died in " << _green << locationName
+    cout << _red << "DEATH: " << _default << " Creature of species " << _blue << name << _default << " has " << _red << "died " << _default << "in " << _green << locationName
     << _default << " at age " << _green << c->getAge() << endl;
 
 }
