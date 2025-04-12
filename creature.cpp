@@ -5,8 +5,7 @@
 #include <algorithm>
 
 
-Environment * Creature::getLocation()
-{
+Environment * Creature::getLocation() {
     return this->_location;
 }
 
@@ -15,8 +14,7 @@ void Creature::setLocation(Environment *location)
     this->_location = location;
 }
 
-void Creature::metabolize()
-{
+void Creature::metabolize() {
 
     if(this->_age > this->_old) {
         this->_durability -= (unsigned int) (this->_totalDurability * 0.25);
@@ -41,13 +39,11 @@ void Creature::metabolize()
     
 }
 
-bool Creature::checkDead()
-{
+bool Creature::checkDead() {
     return _dead;
 }
 
-void Creature::die()
-{
+void Creature::die() {
     this->_dead = true;
 }
 
@@ -59,8 +55,7 @@ int Creature::getAge() const {
     return this->_age;
 }
 
-void Creature::getName(char (& output)[MAX_CREATURE_NAME_LENGTH + 1]) const
-{
+void Creature::getName(char (& output)[MAX_CREATURE_NAME_LENGTH + 1]) const {
     strcpy(output, this->_speciesName);
 }
 
