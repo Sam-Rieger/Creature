@@ -39,6 +39,8 @@ void Environment::updateFoodList() {
             iterator = _foods.erase(iterator);
         }
 
+        ++iterator;
+
     }
 
     for(foodType ft : _foodTypes) {
