@@ -206,7 +206,7 @@ void Creature::expendEnergy(unsigned int energy)
 
 void Creature::egg() {
     // laying eggs is hard.  this provides for death during childbirth, too.
-    expendEnergy(35);
+    expendEnergy(20);
 //    return Creature(*this->_species);
 
 }
