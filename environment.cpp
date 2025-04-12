@@ -13,25 +13,33 @@ void Environment::setNeighbors(Environment *E1, Environment *E2)
     E1->_connections.push_back(E2);
     E2->_connections.push_back(E1);
 }
-/*
-void Environment::updateCreatureList(std::vector<Creature *> creatures)
-{
-    this->_creatures.clear();
-    for(Creature * c : creatures) {
-        if(c->getLocation() == this) {
-            this->_creatures.push_back(c);
-        }
-    }
-}
-*/
+
+
 
 void Environment::getName(char (& output)[MAX_ENVIRONMENT_NAME_LENGTH]) const
 {
     strncpy(output, this->_name, MAX_ENVIRONMENT_NAME_LENGTH);
 }
 
+void Environment::addFood(foodType type, int amount) {
+    _foods.push_back(Food(amount, type));
+}
+
 void Environment::updateFoodList() {
-    _foods.erase(_foods.begin(), _foods.end());
+
+    // get rid of consumed food
+
+    auto iterator = _foods.begin();        
+
+    while (iterator != _foods.end()) {
+
+        Food f = (*iterator);
+
+        if(f.getFoodAmount() <= 1) {
+            iterator = _foods.erase(iterator);
+        }
+
+    }
 
     for(foodType ft : _foodTypes) {
         _foods.push_back(Food(_foodFactor, ft));

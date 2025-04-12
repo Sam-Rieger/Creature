@@ -64,6 +64,8 @@ class Environment {
      */
     void getName(char (& output)[MAX_ENVIRONMENT_NAME_LENGTH]) const;
 
+    void addFood(foodType type, int amount);
+
     private:
     std::vector<Environment*> _connections; // environemnts connected to this one
     //std::vector<Creature*> _creatures; // who is living here

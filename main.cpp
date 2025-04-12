@@ -208,10 +208,15 @@ int main() {
             // creature actions, one at a time based on speed/age, but only if alive
 
             if(!c->checkDead()) {
-                if(c->makeDecision(&ui, creatures) == 1) {
-                    creatureQueue.push_back(c->getParent());
-                    locationQueue.push_back(c->getLocation());
+                switch(c->makeDecision(&ui, creatures)) {
+                    case 1:
+                        creatureQueue.push_back(c->getParent());
+                        locationQueue.push_back(c->getLocation());
+                        break;
+                    case 3:
+                        break;
                 }
+
 
 
                 // end of turn metabolism (leading cause of death)

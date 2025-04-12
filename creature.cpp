@@ -135,14 +135,14 @@ Creature::~Creature(){
     // no special implementation needed, just satisfying big 3 (no DMM, but did define copy constructor and I don't wanna fight for points)
 }
 
-Creature::operator Food() const
-{
-    return Food(this->_fat, foodType::softMeat);
-}
-
 void Creature::eat(Food * food)
 {
     this->_stomachFood = Food(food->getConsumed(this->_stomachCapacity), food->getFoodType());
+}
+
+int Creature::getFoodFromBody()
+{
+    return this->_fat + this->_stomachFood.getFoodAmount() + 5;
 }
 
 void Creature::hunt(Creature * enemy) {
@@ -153,6 +153,8 @@ void Creature::hunt(Creature * enemy) {
         enemy->die();
         this->loseHealth(enemy->_defense - _strength);
     }
+    _location->addFood(foodType::softMeat, enemy->getFoodFromBody());
+    this->eat(&_location->getFood().back());
 
 
 }

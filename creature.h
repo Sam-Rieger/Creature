@@ -54,18 +54,18 @@ class Creature {
     ~Creature();
 
     /**
-     * @brief Defines static cast from creature to food
-     * 
-     * @return Food 
-     */
-    explicit operator Food() const;
-
-    /**
      * @brief puts food in the creature's stomach
      * 
      * @param food food's index from the environment
      */
     void eat(Food * food);
+
+    /**
+     * @brief Get the equivalent food amount from the dead body of this creature.
+     * 
+     * @return int the amount of food
+     */
+    int getFoodFromBody();
 
     /**
      * @brief Attack the enemy creature
@@ -115,7 +115,7 @@ class Creature {
      * @param ui ui object to interface with
      * @param creatures vector of creatures that exist (for eating purposes)
      * 
-     * @return int - 0: ate food; 1: layed egg; 
+     * @return int - 0: ate food; 1: layed egg; 2 moved; 3 hunted
      */
     int makeDecision(UI * ui, std::vector<Creature*> & creatures);
 
