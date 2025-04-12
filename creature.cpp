@@ -16,6 +16,14 @@ void Creature::setLocation(Environment *location)
 
 void Creature::metabolize() {
 
+    if(this->_stomachFood.getFoodAmount() > (int) this->_stomachCapacity) {
+        _stomachFood.getConsumed(_stomachFood.getFoodAmount() - _stomachCapacity);
+    }
+
+    if(this->_fat > this->_fatCapacity) {
+        this->_fat = this->_fatCapacity;
+    }
+
     if(this->_age > this->_old) {
         this->_durability -= (unsigned int) (this->_totalDurability * 0.25);
     }
