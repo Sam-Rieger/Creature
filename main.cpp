@@ -103,8 +103,16 @@ int main() {
             fin.getline(creatureData[j], MAX_DATA_MEMBER_LENGTH);
         }
 
-        // TODO: replace with the actually edible food
-        std::vector<foodType> edible = {foodType::veggie1, foodType::veggie2, foodType::veggie3, foodType::softMeat};
+        std::vector<foodType> edible = {/*foodType::veggie1, foodType::veggie2, foodType::veggie3, foodType::softMeat*/};
+
+        for(char c : creatureData[9]) {
+            // adds enum types to edible foods
+            //std::cout << c << std::endl;
+            if(c >= '0' && c <= '9') {
+
+                edible.push_back((foodType) (c - '0'));
+            }
+        }
 
         
         // constructs a species based on loaded data
@@ -229,7 +237,7 @@ int main() {
             
         }
 
-        for(int i = 0; i < creatureQueue.size(); ++i) {
+        for(int i = 0; i < (int) creatureQueue.size(); ++i) {
             creatures.push_back(new Creature(*creatureQueue.at(i)));
             creatures.back()->setLocation(locationQueue.at(i));
         }

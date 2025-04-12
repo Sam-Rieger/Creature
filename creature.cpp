@@ -205,10 +205,12 @@ int Creature::makeDecision(UI * ui, std::vector<Creature*> & creatures) {
 
     // first, check if it can reproduce?
 
-    if((unsigned) (_fat + _stomachFood.getFoodAmount()) > 35U + _metabolism && _age > 1) {
-        this->egg();
-        ui->printAction(this, "Lays an egg");
-        return 1;
+    if((unsigned) (_fat + _stomachFood.getFoodAmount()) > 35U + _metabolism) {
+        if(_age > (unsigned int)(_old / 4) && _age < (unsigned int)( (3 * _old) / 4)  ) {
+            this->egg();
+            ui->printAction(this, "Lays an egg");
+            return 1;
+        }
     }
 
     // next, will look for food within this region
@@ -229,7 +231,7 @@ int Creature::makeDecision(UI * ui, std::vector<Creature*> & creatures) {
     if(std::find(_edibleFoods.begin(), _edibleFoods.end(), foodType::softMeat) != _edibleFoods.end()) {
         //predator!
         for(Creature * c : creatures) {
-            if(c->getLocation() == this->_location) {
+            if((c->getLocation() == this->_location) && (this != c)) {
                 this->hunt(c);
                 ui->printFightingAction(this, c);
                 return 3;
