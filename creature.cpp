@@ -5,12 +5,11 @@
 #include <algorithm>
 
 
-Environment * Creature::getLocation() {
+Environment * Creature::getLocation() const {
     return this->_location;
 }
 
-void Creature::setLocation(Environment *location)
-{
+void Creature::setLocation(Environment *location) {
     this->_location = location;
 }
 
@@ -47,7 +46,7 @@ void Creature::metabolize() {
     
 }
 
-bool Creature::checkDead() {
+bool Creature::checkDead() const {
     return _dead;
 }
 
@@ -148,13 +147,11 @@ Creature::~Creature(){
     // no special implementation needed, just satisfying big 3 (no DMM, but did define copy constructor and I don't wanna fight for points)
 }
 
-void Creature::eat(Food * food)
-{
+void Creature::eat(Food * food) {
     this->_stomachFood = Food(food->getConsumed(this->_stomachCapacity), food->getFoodType());
 }
 
-int Creature::getFoodFromBody()
-{
+int Creature::getFoodFromBody() const {
     return ((int) this->_fat) + this->_stomachFood.getFoodAmount();
 }
 

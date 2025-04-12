@@ -22,12 +22,10 @@ int Food::getConsumed(unsigned int amount)
     }
 }
 
-foodType Food::getFoodType()
-{
+foodType Food::getFoodType() const {
     return this->_type;
 }
 
-int Food::getFoodAmount()
-{
+int Food::getFoodAmount() const {
     return this->_foodAmount;
 }

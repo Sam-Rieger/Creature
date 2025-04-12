@@ -37,14 +37,14 @@ class Food {
      */
     int getConsumed(unsigned int amount);
 
-    foodType getFoodType();
+    foodType getFoodType() const;
 
     /**
      * @brief Get the amount of food left
      * 
      * @return int 
      */
-    int getFoodAmount();
+    int getFoodAmount() const;
 
 
     private:

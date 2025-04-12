@@ -65,7 +65,7 @@ class Creature {
      * 
      * @return int the amount of food
      */
-    int getFoodFromBody();
+    int getFoodFromBody() const;
 
     /**
      * @brief Attack the enemy creature
@@ -125,7 +125,7 @@ class Creature {
      * 
      * @return Environment* 
      */
-    Environment* getLocation();
+    Environment* getLocation() const;
 
     /**
      * @brief Set the location of the creature
@@ -146,7 +146,7 @@ class Creature {
      * 
      * @return true means dead, false, you get it
      */
-    bool checkDead();
+    bool checkDead() const;
 
     /**
      * @brief death comes for us all
