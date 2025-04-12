@@ -171,12 +171,20 @@ int main() {
     int tick = 0;
 
     while(true) {
+        // pointer to species of creatures to be hatched
+        std::vector<Creature*> creatureQueue = {};
 
         ui.printTimeTick(++tick);
 
         // resort creatures based on their speed/age
 
-        makeCreatureInitiativeOrder(creatures);                 
+        makeCreatureInitiativeOrder(creatures);              
+
+        // grow more food
+
+        for(Environment * e : locations) {
+            e->updateFoodList();
+        }   
 
 
         // essentially a for loop, but allows for reindexing
@@ -191,7 +199,9 @@ int main() {
             //c->die();
 
             if(!c->checkDead()) {
-                c->makeDecision(&ui, creatures);
+                if(c->makeDecision(&ui, creatures) == 1) {
+                    creatureQueue.push_back(c->getParent());
+                }
                 c->metabolize();
             }
 
@@ -214,13 +224,23 @@ int main() {
             
         }
 
-        // TODO: add details options
+        for(Creature * c : creatureQueue) {
+            std::cout << "queued age: " << c->getAge() << std::endl;
+            creatures.push_back(new Creature(*c));
+        }
+
+        
 
         
         input[0] = '\0'; // works because string is null-terminated
         ui.printPrompt("Type \"DETAILS\" to view specific creature information, or anything else to skip.", input);
-
+        
         if(strncmp("DETAILS", input, 9) == 0) {
+
+
+            // TODO: add details options
+
+
             for(Creature * c : creatures) {
                 ui.printCreatureInformation(c);
             }

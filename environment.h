@@ -34,7 +34,7 @@ class Environment {
      * @brief Updates the environment's creatures (dead/moved)
      * 
      */
-    void updateCreatureList();
+    //void updateCreatureList();
 
     /**
      * @brief gets rid of eaten food from the environment, grows more.
@@ -54,7 +54,7 @@ class Environment {
      * 
      * @return std::vector<Food *> the food
      */
-    std::vector<Food *> getFood();
+    std::vector<Food> getFood();
 
     /**
      * @brief Get the name of this location
@@ -68,7 +68,7 @@ class Environment {
     std::vector<Environment*> _connections; // environemnts connected to this one
     //std::vector<Creature*> _creatures; // who is living here
     std::vector<foodType> _foodTypes; // what food grows here
-    std::vector<Food *> _foods; // pointers to all the foods here
+    std::vector<Food> _foods; // pointers to all the foods here
     int _foodFactor; // abundance of food (growth rate per turn)
     char _name[MAX_ENVIRONMENT_NAME_LENGTH]; // name
 

@@ -48,8 +48,8 @@ class Food {
 
 
     private:
-    foodType _type;
-    unsigned int _foodAmount;
+    foodType _type; // what kind of food this food is
+    unsigned int _foodAmount; // how much there is
     
 };
 

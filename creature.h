@@ -99,10 +99,16 @@ class Creature {
     /**
      * @brief lay an egg
      * 
-     * @return Creature; the result
+     * 
      */
     void egg();
 
+    /**
+     * @brief Get the Parent species of this creature
+     * 
+     * @return Creature* pointer to the species
+     */
+    Creature * getParent() const;
 
     /**
      * @brief make a decision on what to do.  Each creature does its actions, then checks for death.

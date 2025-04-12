@@ -30,14 +30,19 @@ void Environment::getName(char (& output)[MAX_ENVIRONMENT_NAME_LENGTH]) const
     strncpy(output, this->_name, MAX_ENVIRONMENT_NAME_LENGTH);
 }
 
+void Environment::updateFoodList() {
+    _foods.erase(_foods.begin(), _foods.end());
 
+    for(foodType ft : _foodTypes) {
+        _foods.push_back(Food(_foodFactor, ft));
+    }
+}
 
 std::vector<Environment *> Environment::getConnections() {
     return this->_connections;
-
 }
 
-std::vector<Food *> Environment::getFood() {
+std::vector<Food> Environment::getFood() {
     return this->_foods;
 }
 

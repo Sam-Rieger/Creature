@@ -199,6 +199,11 @@ void Creature::egg() {
 
 }
 
+Creature *Creature::getParent() const
+{
+    return this->_species;
+}
+
 int Creature::makeDecision(UI * ui, std::vector<Creature*> & creatures) {
 
     // first, check if it can reproduce?
@@ -208,16 +213,16 @@ int Creature::makeDecision(UI * ui, std::vector<Creature*> & creatures) {
         ui->printAction(this, "Lays an egg");
         return 1;
     }
-    
+
     // next, will look for food within this region
     for(foodType ft : _edibleFoods) {
-       for(Food *&f : _location->getFood()) {
-            if(ft == f->getFoodType()) {
+       for(Food &f : _location->getFood()) {
+            if(ft == f.getFoodType()) {
                 // can eat
-                if((unsigned) f->getFoodAmount() > this->_metabolism) {
+                if((unsigned) f.getFoodAmount() > this->_metabolism) {
                     // worth spending a turn eating
-                    this->eat(f);
-                    ui->printEatingAction(this, f);
+                    this->eat(&f);
+                    ui->printEatingAction(this, &f);
                     return 0;
                 }
             }
