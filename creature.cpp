@@ -64,13 +64,15 @@ void Creature::getName(char (& output)[MAX_CREATURE_NAME_LENGTH + 1]) const
     strcpy(output, this->_speciesName);
 }
 
-bool Creature::operator < (Creature const &c)
-{
-    if(this->getSpeed() == c.getSpeed()) {
-        return(this->getAge() > c.getAge());
-    } else {
-        return(this->getSpeed() < c.getSpeed());
-    }
+bool Creature::operator < (Creature const &c) {
+
+    // std::sort is in non-decending order, so the smallest value is first.  therefore, lesser means faster.
+
+    /*if(this->getSpeed() == c.getSpeed()) {
+        return(this->getAge() <= c.getAge());
+    } else {*/
+        return(this->getSpeed() >= c.getSpeed());
+    //}
 }
 
 Creature::Creature(unsigned int totalDurability, unsigned int strength, unsigned int defense, unsigned int stomachCapacity, 
