@@ -230,8 +230,9 @@ int Creature::makeDecision(UI * ui, std::vector<Creature*> & creatures) {
        }
     }
 
-    if(std::find(_edibleFoods.begin(), _edibleFoods.end(), foodType::softMeat) != _edibleFoods.end()) {
+    //if(std::find(_edibleFoods.begin(), _edibleFoods.end(), foodType::softMeat) != _edibleFoods.end()) {
         //predator!
+    if((unsigned) _stomachFood.getFoodAmount() <= (_metabolism / 2)) {
         for(Creature * c : creatures) {
             if((c->getLocation() == this->_location) && (this != c)) {
                 this->hunt(c);

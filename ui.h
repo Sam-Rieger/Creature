@@ -71,6 +71,8 @@ class UI {
      */
     void printPrompt(char const * prompt, char (& output)[MAX_INPUT_LENGTH + 1]) const;
 
+    void printPopulation(Creature * const  c, int population);
+
     /**
      * @brief Prints current date
      * 

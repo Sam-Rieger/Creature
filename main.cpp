@@ -221,13 +221,7 @@ int main() {
 
                 // end of turn metabolism (leading cause of death)
                 c->metabolize();
-            }
-
-
-
-
-
-            
+            }           
             
             // deletes those which are dead
             if(c->checkDead()) {
@@ -249,25 +243,47 @@ int main() {
 
         
 
-        
+        // allow user to do UI things (look at data)
         input[0] = '\0'; // works because string is null-terminated
-        ui.printPrompt("Type \"DETAILS\" to view specific creature information, or anything else to skip.", input);
+        ui.printPrompt("Type \"DETAILS\" to view specific information, or anything else to skip.", input);
         
         if(strncmp("DETAILS", input, 9) == 0) {
+            while(true) {
+                input[0] = '\0'; // works because string is null-terminated
+                ui.printPrompt("\"POP\" for population data, \"IND\" for individual data, or anything else to exit details mode", input);
+                if(strncmp("POP", input, 4) == 0) {
+
+                    for(Creature * s : species) {
+                        unsigned int count = 0;
+                        for(Creature * c : creatures) {
+                            if(c->getParent() == s) {
+                                ++count;
+                            }
+                        }
+
+                        ui.printPopulation(s, count);
+                    }
+                    
+                } else if(strncmp("IND", input, 4) == 0) {
 
 
-            // TODO: add details options
+                    for(Creature * c : creatures) {
+                        ui.printCreatureInformation(c);
+                    }
 
 
-            for(Creature * c : creatures) {
-                ui.printCreatureInformation(c);
+                } else {
+                    break;
+                }
             }
+
+            
         }
+
+
 
         // +1 because of null terminator; the actual max input length is 64, but we need the 65th.  personal preference for notation (anyone editing the macros does not need to consider terminators)
         
-
-
         input[0] = '\0'; // works because string is null-terminated
         ui.printPrompt("Type anything else to execute another timestep, or type \"HALT\" to end it.", input);
 
@@ -275,7 +291,6 @@ int main() {
             break;
         }
     }
-
 
 
 

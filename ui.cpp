@@ -81,6 +81,15 @@ void UI::printPrompt(char const * prompt, char (& output)[MAX_INPUT_LENGTH + 1])
     strncpy(output, input, MAX_INPUT_LENGTH);
 }
 
+void UI::printPopulation(Creature * const c, int population) {
+
+    char name[MAX_CREATURE_NAME_LENGTH + 1] = {'\0'};
+    c->getName(name);
+
+    cout << _green << "STATISTIC: " << _default << "Species " << _blue << name << _default << " has " << _green << population << _default << " members" << endl;
+
+}
+
 void UI::printTimeTick(unsigned int tick) {
 
     cout << endl << endl << endl << _green << "DATE:  " << _default << " It is currently tick " << _blue << tick << _default << endl;
